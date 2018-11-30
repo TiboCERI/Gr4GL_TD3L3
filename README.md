@@ -11,3 +11,4 @@ explication générale du système :
 procédure nécessaire pour lancer les programmes:
 
 -Utilisation d'un executeur dans le programme permettant de lancer la commande 'pdftotext'
+
