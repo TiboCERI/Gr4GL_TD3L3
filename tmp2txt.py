@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-import sys
-import os
-import os.path
-import subprocess as sp
+import sys      #argument 
+import os       #commande de base
+import os.path  #le path du program
+import shutil   #pour suprimmer récursivement
+import subprocess as sp #commande 
 
 def filtre(src,dst):
     for ligne in src:
@@ -10,12 +11,20 @@ def filtre(src,dst):
 
 
 
-def transmog():
+def transmog(arg):
+    s = []
+    s.append(arg)
+    s.append("/result")
+    result = ''.join(s)
+    if os.path.exists(result):
+       shutil.rmtree(result)
+    os.mkdir(result)
 
-    if os.path.exists("result"):
-        os.removedirs("result")
-    os.mkdir("result")
-    for element in os.listdir('/tmp'):
+    f = []
+    f.append(arg)
+    f.append("/tmp")
+    tmp = ''.join(f)
+    for element in os.listdir(tmp):
         if element.endswith('.txt'):
             a = "../result/"
             source = open(element,"r")
@@ -31,13 +40,13 @@ def pdf(arg):
     s.append("/tmp")
     tmp = ''.join(s)
     if os.path.exists(tmp):
-        os.removedirs(tmp)
+        shutil.rmtree(tmp)
     os.mkdir(tmp)
     a = []
     for element in os.listdir(arg):
         if element.endswith('.pdf'):
             print(os.getcwd())
-            a.append("pdf2txt -o ")
+            a.append("pdf2txt -o -p[1] ")
             a.append(arg)
             a.append("/tmp/")
             a.append(element)
@@ -59,7 +68,7 @@ else:
     if os.path.exists(sys.argv[1]):
        # os.chdir(sys.argv[1])
         pdf(sys.argv[1])
-        transmog()
+        transmog(sys.argv[1])
        # sp.Popen("rm tmp")
     else:
         sys.exit(2)
