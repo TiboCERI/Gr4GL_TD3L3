@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*
 import sys      #argument 
 import os       #commande de base
 import os.path  #le path du program
@@ -35,7 +36,7 @@ def pdf(arg):
     for element in os.listdir(arg):
         if element.endswith('.pdf'):
             print(os.getcwd())
-            a = "pdf2txt -p[1] '{0}/{1}/{2}' > {0}/{1}/tmp/{2}.txt".format(os.getcwd(),arg, element)
+            a = "pdf2txt -p[1] {1}/{2} > {1}/tmp/{2}.txt".format(os.getcwd(),arg, element)
             sp.Popen(a)
           #  sp.run(["pdf2txt","-o" ,arg,"/tmp/",element, ".txt ", arg,element])
         #    a = "pdf2txt -p[1] '{0}/{1}/{2}' > {0}/{1}/tmp/{2}.txt".format(os.getcwd(),arg, element)
