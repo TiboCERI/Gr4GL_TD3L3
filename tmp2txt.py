@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+import os.path
 import subprocess as sp
 
 def filtre(src,dst):
@@ -8,10 +9,12 @@ def filtre(src,dst):
         print(ligne)
 
 
+
 def transmog():
-    if exists("result"):
-        sp.Popen("rm result")
-    sp.Popen("mkdir result")
+
+    if os.path.exists("result"):
+        os.removedirs("result")
+    os.mkdir("result")
     for element in os.listdir('/tmp'):
         if element.endswith('.txt'):
             a = "../result/"
@@ -23,24 +26,41 @@ def transmog():
 
 
 def pdf(arg):
-    sp.Popen("mkdir tmp")
+    s = []
+    s.append(arg)
+    s.append("/tmp")
+    tmp = ''.join(s)
+    if os.path.exists(tmp):
+        os.removedirs(tmp)
+    os.mkdir(tmp)
+    a = []
     for element in os.listdir(arg):
         if element.endswith('.pdf'):
-            a = "pdf2txt "
-            a += element
-            a += " > tmp/"
-            a += element
-            a += ".txt" 
-            sp.Popen(a)
+            print(os.getcwd())
+            a.append("pdf2txt -o ")
+            a.append(arg)
+            a.append("/tmp/")
+            a.append(element)
+            a.append(".txt " )
+            a.append(arg)
+            a.append("/")
+            a.append(element)
+            
+            sp.Popen(''.join(a))
+          #  sp.run(["pdf2txt","-o" ,arg,"/tmp/",element, ".txt ", arg,element])
 
 
-if sys.argv != 2:
-    print "Un seul argument attendu !"
+if len(sys.argv) != 2:
+    print("Un seul argument attendu !")
+    print(sys.argv)
     sys.exit(2)
 else:
-    if exists(sys.argv[1]):
+    current = os.getcwd()
+    if os.path.exists(sys.argv[1]):
+       # os.chdir(sys.argv[1])
         pdf(sys.argv[1])
         transmog()
+       # sp.Popen("rm tmp")
     else:
         sys.exit(2)
         
