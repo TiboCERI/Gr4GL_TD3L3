@@ -12,19 +12,12 @@ def filtre(src,dst):
 
 
 def transmog(arg):
-    s = []
-    s.append(arg)
-    s.append("/result")
-    result = ''.join(s)
-    if os.path.exists(result):
-       shutil.rmtree(result)
-    os.mkdir(result)
-
-    f = []
-    f.append(arg)
-    f.append("/tmp")
-    tmp = ''.join(f)
-    for element in os.listdir(tmp):
+    tmp = "{}/result".format(arg)
+    if os.path.exists(tmp):
+        shutil.rmtree(tmp)
+    os.mkdir(tmp)
+    t = "{}/tmp".format(arg)
+    for element in os.listdir(t):
         if element.endswith('.txt'):
             a = "../result/"
             source = open(element,"r")
@@ -35,28 +28,17 @@ def transmog(arg):
 
 
 def pdf(arg):
-    s = []
-    s.append(arg)
-    s.append("/tmp")
-    tmp = ''.join(s)
+    tmp = "{}/tmp".format(arg)
     if os.path.exists(tmp):
         shutil.rmtree(tmp)
     os.mkdir(tmp)
-    a = []
     for element in os.listdir(arg):
         if element.endswith('.pdf'):
             print(os.getcwd())
-            a.append("pdf2txt -o -p[1] ")
-            a.append(arg)
-            a.append("/tmp/")
-            a.append(element)
-            a.append(".txt " )
-            a.append(arg)
-            a.append("/")
-            a.append(element)
-            
-            sp.Popen(''.join(a))
+            a = "pdf2txt -p[1] '{0}/{1}/{2}' > {0}/{1}/tmp/{2}.txt".format(os.getcwd(),arg, element)
+            sp.Popen(a)
           #  sp.run(["pdf2txt","-o" ,arg,"/tmp/",element, ".txt ", arg,element])
+        #    a = "pdf2txt -p[1] '{0}/{1}/{2}' > {0}/{1}/tmp/{2}.txt".format(os.getcwd(),arg, element)
 
 
 if len(sys.argv) != 2:
