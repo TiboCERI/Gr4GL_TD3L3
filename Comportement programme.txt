@@ -1,3 +1,0 @@
-Etape 1 : Le programme récupère les pdfs d'un dossier passé en paramètre.
-Etape 2 : Le programme convertit chaque .pdf en .txt du même nom dans le dossier local au programme nommé TEMP (temporaire).
-Etape 3 : Le programme analyse les fichiers .txt de TEMP pour extraire les données voulues (nom du fichier d'origine, titre du pdf, le résumé ou abstract de l'auteur), puis il exporte ces données extraites en fichiers .txt de même nom dans un dossier de sortie. Le dossier de sortie porte le même nom que le dossier contenant les pdf, avec txt en plus.
