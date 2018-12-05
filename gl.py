@@ -51,35 +51,76 @@ def transmog(arg):
 		    destination.close()
 
 
-def pdf(arg):
-    tmp = "{}/tmp".format(arg)
+def pdf(directoryPath):
+    # Faire une purge du répértoire temporaire à l'intérieur du dossier passé
+    # en paramètre lorsqu'il existe
+    tmp = "{}/tmp".format(directoryPath)
     if os.path.exists(tmp):
         shutil.rmtree(tmp)
+    
+    # Créer un dossier temporaire à l'intérieur du dossier passé en paramètres
     os.mkdir(tmp)
-    for element in os.listdir(arg):
-        if element.endswith('.pdf'):
-            s = element.replace(' ','_')
-            os.rename("{0}/{1}".format(arg,element), "{0}/{1}".format(arg,s))
-    for element in os.listdir(arg):
-        if element.endswith('.pdf'):
-            el = element.replace('.pdf','')
-            a ="pdftotext -f 1 {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),arg, element,el)
-            os.system(a)
+
+    # Pour chaque fichier pdf ( se terminant par .pdf)
+    for fileName in os.listdir(directoryPath):
+        if fileName.endswith('.pdf'):
+            # Récupérer le nom du fichier sans extension
+            fileNameWithouExt = os.path.splitext(fileName)[0]
+            # Créer un nom de fichier qui est le même que le fichier pdf
+            # en remplacent les espace par des underscore
+            newFileName = fileName.replace(' ','_')
+
+            # renommer le fichier 
+            os.rename("{0}/{1}".format(directoryPath,fileName), "{0}/{1}".format(directoryPath,newFileName))
+            # créer la commande qui permet de 
+            pdfToTextCommand = "pdftotext -f 1 {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
+            # Executer la commande de conversion
+            os.system(pdfToTextCommand)
           
+            
+    
 
+# code des couleurs
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+          
+print(bcolors.HEADER + "***************************************")
+print("*       Welcom to PDF To TXT          *")
+print("***************************************" + bcolors.ENDC)
 
-if len(sys.argv) != 2:
-    print("Un seul argument attendu !")
-    print(sys.argv)
+# S'assurer que notre programme reçois le bon nombre d'argument 
+# le premier argument est le nom de notre script python
+# le deuxième argument est le répértoire content l'ensemble des fichiers pdf à convertir.
+if len(sys.argv) != 2: 
+    print(bcolors.FAIL + "Ooops nombre d'arguments incorrect" + bcolors.ENDC)
+    print("Merci de passer en paramètre le dossier contenant les fichier pds à convertir.")
+    print("Exemple: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier" + bcolors.ENDC)
     sys.exit(2)
 else:
+    # Récupérer le répértoire courant ( cwd : current working directory )
     current = os.getcwd()
-    if os.path.exists(sys.argv[1]) & os.path.isdir(sys.argv[1]):
-        pdf(sys.argv[1])	
-        transmog(sys.argv[1])
-        t = "{}/tmp".format(sys.argv[1])
-        shutil.rmtree(t)
-    else:
-        print( "L'argument n'éxiste pas ou n'est pas un répertoire !")
+    directory = sys.argv[1]
+
+    # Terminer le programme si le l'argument passé en paramètre n'existe pas
+    if not os.path.exists(directory):
+        print(bcolors.FAIL + "L'argument passé en paramètre n'existe pas." + bcolors.ENDC)
         sys.exit(2)
-        
+    
+    # Terminer le programme si le l'argument passé en n'est pas un dossier
+    if not os.path.isdir(directory):
+        print(bcolors.FAIL + "L'argument passé en paramètre n'est pas un dossier." + bcolors.ENDC)
+        sys.exit(2)
+    
+    # Début de la conversion
+    print ("Conversion des fichier du répértoire " + directory)
+    pdf(directory)	
+    transmog(directory)
+    t = "{}/tmp".format(directory)
+    shutil.rmtree(t)   
