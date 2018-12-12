@@ -6,21 +6,27 @@ import os.path  #le path du program
 import shutil   #pour suprimmer récursivement
 
 def filtre(src,dst,element):
-		titre = element.replace('.txt','').replace('_',' ') 		# on remplace les underscore par des espaces et on enleve l'extension du fichier 
-		dst.write("Nom du pdf : "+titre+"\n")				 		# on ecrit le nom du pdf dans le fichier de destination (premiere ligne)					
+        # on remplace les underscore par des espaces et on enleve l'extension du fichier 
+		titre = element.replace('.txt','').replace('_',' ')
+        # on ecrit le nom du pdf dans le fichier de destination (premiere ligne) 		
+		dst.write("Nom du pdf : "+titre+"\n")				 							
 		for i in range(2000,2019) :								
 			if str(i) in titre :
 				annee = str(i)	
-		dst.write("Titre : "+  titre.split(annee)[1] + "\n")  		# on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)
-		txt = src.read()											# lecture du fichier dans une variable string
-		if "ABSTRACT" in txt :										# blocs de conditions pour identifier le début du résumé  
+        # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)
+		dst.write("Titre : "+  titre.split(annee)[1] + "\n") 
+        # lecture du fichier dans une variable string 		
+		txt = src.read()
+        # blocs de conditions pour identifier le début du résumé  											
+		if "ABSTRACT" in txt :										
 			debut = txt.split("ABSTRACT",1)						
 								
 		elif "Abstract" in txt :
 			debut = txt.split("Abstract",1)
 		
 		fin="1"
-		if "Keywords" in txt :										# blocs de conditions pour identifier la fin du résumé
+        # blocs de conditions pour identifier la fin du résumé
+		if "Keywords" in txt :										
 			fin="Keywords"
 			
 		elif "Index" in txt :
@@ -29,7 +35,8 @@ def filtre(src,dst,element):
 		a1 = debut[1].split(fin)
 		a2 = a1[0].split("\n")
 		dst.write("Resumé : ")
-		for i in range(0,len(a2)) :									# ecriture du résumé dans le fichier de destination sur une seule ligne (troisieme ligne)
+        # ecriture du résumé dans le fichier de destination sur une seule ligne (troisieme ligne)
+		for i in range(0,len(a2)) :									
 			dst.write(a2[i])
 		
 
@@ -72,7 +79,7 @@ def pdf(directoryPath):
 
             # renommer le fichier 
             os.rename("{0}/{1}".format(directoryPath,fileName), "{0}/{1}".format(directoryPath,newFileName))
-            # créer la commande qui permet de 
+            # créer la commande qui permet de faire la conversion
             pdfToTextCommand = "pdftotext -f 1 {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
             # Executer la commande de conversion
             os.system(pdfToTextCommand)
@@ -108,7 +115,7 @@ else:
     current = os.getcwd()
     directory = sys.argv[1]
 
-    # Terminer le programme si le l'argument passé en paramètre n'existe pas
+    # Terminer le programme si l'argument passé en paramètre n'existe pas
     if not os.path.exists(directory):
         print(bcolors.FAIL + "L'argument passé en paramètre n'existe pas." + bcolors.ENDC)
         sys.exit(2)
