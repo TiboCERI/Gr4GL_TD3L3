@@ -1,0 +1,3 @@
+Nom du pdf : Doyle 2005 Automatic Categorization of Author Gender
+Titre :  Automatic Categorization of Author Gender
+Resumé : We present a method for automaticcategorization of author gender vian-gram analysis. Using a corpusof British student essays, experiments using character-level, wordlevel, and part-of-speech n-grams areperformed. The peak accuracy for allmethods is roughly equal, reaching amaximum of 8

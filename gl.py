@@ -80,7 +80,7 @@ def pdf(directoryPath):
             # renommer le fichier 
             os.rename("{0}/{1}".format(directoryPath,fileName), "{0}/{1}".format(directoryPath,newFileName))
             # créer la commande qui permet de faire la conversion
-            pdfToTextCommand = "pdftotext -f 1 {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
+            pdfToTextCommand = "pdftotext {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
             # Executer la commande de conversion
             os.system(pdfToTextCommand)
           
