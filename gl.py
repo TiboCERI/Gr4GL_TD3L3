@@ -105,10 +105,16 @@ print("***************************************" + bcolors.ENDC)
 # S'assurer que notre programme reçois le bon nombre d'argument 
 # le premier argument est le nom de notre script python
 # le deuxième argument est le répértoire content l'ensemble des fichiers pdf à convertir.
-if len(sys.argv) != 2: 
+# le troisiéme argument est pour choisir le type de sortie soit txt ou xml
+
+if len(sys.argv) != 3: 
     print(bcolors.FAIL + "Ooops nombre d'arguments incorrect" + bcolors.ENDC)
     print("Merci de passer en paramètre le dossier contenant les fichier pds à convertir.")
-    print("Exemple: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier" + bcolors.ENDC)
+    print("et le type de sortie :")
+    print(bcolors.OKBLUE+"soit -t pour un fichier en format texte ."+bcolors.ENDC)
+    print(bcolors.OKBLUE+"soit -x pour un fichier en format xml."+ bcolors.ENDC)
+    print("Exemple 1: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -t pour un fichier TXT" + bcolors.ENDC)
+    print("Exemple 2: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -t pour un fichier XML" + bcolors.ENDC)
     sys.exit(2)
 else:
     # Récupérer le répértoire courant ( cwd : current working directory )
@@ -124,10 +130,22 @@ else:
     if not os.path.isdir(directory):
         print(bcolors.FAIL + "L'argument passé en paramètre n'est pas un dossier." + bcolors.ENDC)
         sys.exit(2)
+    # Verifier si le type de sortie est égale a txt
+    if sys.argv[2] == '-t':
+        # Début de la conversion
+        print("Conversion pdf to txt")
+        print ("Conversion des fichier du répértoire " + directory)
+        pdf(directory)	
+        transmog(directory)
+        t = "{}/tmp".format(directory)
+        shutil.rmtree(t) 
+    # Verifier si le type de sortie est égale a xml
+    #elif sys.argv[2] == '-x':
+        #...
+    # Terminer le programme si l'argument de type de sortie n'égale ni à txt ni à xml 
+    else :
+        print(bcolors.FAIL + "Ooops le type de sortie est inconnue" + bcolors.ENDC)
+        sys.exit(2)
     
-    # Début de la conversion
-    print ("Conversion des fichier du répértoire " + directory)
-    pdf(directory)	
-    transmog(directory)
-    t = "{}/tmp".format(directory)
-    shutil.rmtree(t)   
+
+      
