@@ -3,14 +3,9 @@
 Le C++ est plus rapide que le python pour exécuter le même code de test.
 Mais nous partons tout de même sur le python car il minimise les risques de bug et nous simplifie la partie développement.
 
-### ******* version 1.0.0 *******
-Pour lancer le programme il suffit de mettre le dossier Papers et le fichier gl.py dans un même dossier, puis d'ouvrir le terminal à partir de ce dossier et de lancer le programme avec Papers en argument : "python3 gl.py Papers".
-
-```console
-$ python3 gl.py Papers
-```
-
 ### ******* version 2.0.0 *******
+Pour lancer le programme il suffit de mettre le dossier Papers et le fichier gl.py dans un même dossier,puis d'ouvrir le terminal à partir de ce dossier et de lancer le programme avec Papers en argument .
+
 si vous voulez une conversion:
     pdf to text tapez la commande suivante dans le console :
     ```console
