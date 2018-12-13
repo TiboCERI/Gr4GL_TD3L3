@@ -62,8 +62,8 @@ def pdf(directoryPath):
     # Faire une purge du répértoire temporaire à l'intérieur du dossier passé
     # en paramètre lorsqu'il existe
     tmp = "{}/tmp".format(directoryPath)
-    if os.path.exists(tmp):
-        shutil.rmtree(tmp)
+    #if os.path.exists(tmp):
+        #shutil.rmtree(tmp)
     
     # Créer un dossier temporaire à l'intérieur du dossier passé en paramètres
     os.mkdir(tmp)
@@ -130,4 +130,4 @@ else:
     pdf(directory)	
     transmog(directory)
     t = "{}/tmp".format(directory)
-    shutil.rmtree(t)   
+    #shutil.rmtree(t)   
