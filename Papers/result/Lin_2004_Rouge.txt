@@ -2,16 +2,12 @@ Nom du pdf : Lin 2004 Rouge
 Titre :  A Package for Automatic Evaluation of Summaries
 Resumé : ROUGE stands for Recall-Oriented Understudy forGisting Evaluation. It includes measures to automatically determine the quality of a summary bycomparing it to other (ideal) summaries created byhumans. The measures count the number of overlapping units such as n-gram, word sequences, andword pairs between the computer-generated summary to be evaluated and the ideal summaries created by humans. This paper introduces four differentROUGE measures: ROUGE-N, ROUGE-L, ROUGE-W,and ROUGE-S included in the ROUGE summarization evaluation package and their evaluatio ns. Threeof them have been used in the Document Understanding Conference (DUC) 2004, a large-scalesummarization evaluation sponsored by NIST.
 Auteur :   ;  chin-yew lin  ;  information sciences institute  ;  university of southern california  ;  4676 admiralty way  ;  marina del rey, ca 90292  ;  cyl@isi.edu  ;  
-Biblio :  Cormen, T. R., C. E. Leiserson, and R. L. Rivest  
-  1989. Introduction to Algorithms. The MIT Press  
-  Davison, A. C. and D. V. Hinkley. 1997. Bootstrap Methods and Their Application. Cambridge University Press  
-  Lin, C.-Y. and E. H. Hovy. 2003. Automatic evaluation of summaries using n-gram co-occurrence statistics. In Proceedings of 2003 Language Technology Conference (HLT-NAACL 2003), Edmonton, Canada  
-  Lin, C.-Y. 2004. Looking for a few good metrics: ROUGE and its evaluation. In Proceedings of NTCIR Workshop 2004, Tokyo, Japan  
-  Lin, C.-Y. and F. J. Och. 2004. Automatic evaluation of machine translation quality using longest common subsequence and skip-bigram statistics  
-  In Proceedings of 42nd Annual Meeting of ACL (ACL 2004), Barcelona, Spain  
-  Mani, I. 2001. Automatic Summarization. John Benjamins Publishing Co  
-  Melamed, I. D. 1995. Automatic evaluation and uniform filter cascades for inducing n-best translation lexicons. In Proceedings of the 3 rd Workshop on Very Large Corpora (WVLC3). Boston, U.S.A  
-  Melamed, I. D., R. Green and J. P. Turian (2003)  
-  Precision and recall of machine translation. In Proceedings of 2003 Language Technology Conference (HLT-NAACL 2003), Edmonton, Canada  
-  Over, P. and J. Yen. 2003. An introduction to DUC 2003 – Intrinsic evaluation of generic news text summarization systems  
-  AAAAAAAAAA
+Biblio :  Cormen, T. R., C. E. Leiserson, and R. L. Rivest. 1989.
+ Introduction to Algorithms. The MIT Press. Davison, A. C. and D. V. Hinkley. 1997.
+ Bootstrap Methods and Their Application. Cambridge University Press. Lin, C.-Y. and E. H. Hovy. 2003.
+ Automatic evaluation of summaries using n-gram co-occurrence statistics. In Proceedings of 2003 Language Technology Conference (HLT-NAACL 2003), Edmonton, Canada. Lin, C.-Y. 2004.
+ Looking for a few good metrics: ROUGE and its evaluation. In Proceedings of NTCIR Workshop 2004, Tokyo, Japan. Lin, C.-Y. and F. J. Och. 2004.
+ Automatic evaluation of machine translation quality using longest common subsequence and skip-bigram statistics. In Proceedings of 42nd Annual Meeting of ACL (ACL 2004), Barcelona, Spain. Mani, I. 2001.
+ Automatic Summarization. John Benjamins Publishing Co. Melamed, I. D. 1995.
+ Automatic evaluation and uniform filter cascades for inducing n-best translation lexicons. In Proceedings of the 3 rd Workshop on Very Large Corpora (WVLC3). Boston, U.S.A. Melamed, I. D., R. Green and J. P. Turian (2003). Precision and recall of machine translation. In Proceedings of 2003 Language Technology Conference (HLT-NAACL 2003), Edmonton, Canada. Over, P. and J. Yen. 2003.
+ An introduction to DUC 2003 – Intrinsic evaluation of generic news text summarization systems. AAAAAAAAAA

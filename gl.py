@@ -94,10 +94,30 @@ def Biblio(normalContent):
 	if indexFound == -1 :
 		return "bibliography not found"
 	normalContent = normalContent[:indexFound]	
-	contentOnLine = normalContent.replace(".\n","  ;  ").replace("\n"," ")
-	contentOnLine = contentOnLine.replace(";", "\n")
-	return contentOnLine
+	if "[1]" in normalContent:
+		contentOnLine = normalContent.replace(".\n","  ;  ").replace("\n"," ")
+		contentOnLine = contentOnLine.replace(";", "\n")
+		return contentOnLine
+	elif "(2013)" in normalContent:
+		normalContent = normalContent.replace("\n"," ")
+		for i in range(1900,2020):
+			if str(i) in normalContent:
+				a = "("+str(i)+")"
+				b = "("+str(i)+")\n"
+				
+				normalContent = normalContent.replace(a, b)
+		return normalContent
+	else:
+		normalContent = normalContent.replace("\n"," ")
+		for i in range(1900,2020):
+			if str(i) in normalContent:
+				a = str(i)+"."
+				b = str(i)+".\n"
 
+				
+				normalContent = normalContent.replace(a, b)
+		return normalContent
+	
 
 def transmog(arg):
     tmp = "{}/result".format(arg)
