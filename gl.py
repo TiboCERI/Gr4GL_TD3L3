@@ -39,11 +39,12 @@ def filtre(src,dst,element):
 		for i in range(0,len(a2)) :									
 			dst.write(a2[i])
 
-        #pour identifier les auteurs
+        # pour identifier les auteurs
 		txt = txt.lower()
 		aut = titre.split(annee)[1].split(" ")
 		aut2 = aut[len(aut)-1]
 		aut2= aut2.lower()
+        # ecriture des auteurs dans le fichier de destination 
 		if aut2 in txt :
 			auteur = txt.split(aut2)									
 			if "abstract" in txt :
