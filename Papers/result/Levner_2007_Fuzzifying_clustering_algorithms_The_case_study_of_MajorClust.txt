@@ -19,3 +19,7 @@ indian institute of technology, kanpur, india
 levner@hit.ac.il, {dpinto, prosso}@dsic.upv.es,
 dalcaide@ull.es, rrks@iitk.ac.in
 
+
+Biblio : 1. MacKay, D.J.: Information Theory, Inference and Learning Algorithms. Cambridge
+University Press (2003)
+2. Mirkin, B.: Mathematical Classification and Clustering. Springer (1996)

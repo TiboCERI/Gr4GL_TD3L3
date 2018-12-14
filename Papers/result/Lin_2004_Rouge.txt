@@ -8,3 +8,31 @@ university of southern california
 4676 admiralty way
 marina del rey, ca 90292
 cyl@isi.edu
+
+Biblio : 
+So far, we only demonstrated how to compute
+ROUGE-N using a single reference. When multiple
+references are used, we compute pairwise summarylevel ROUGE-N between a candidate summary s and
+every reference, ri , in the reference set. We then
+take the maximum of pairwise summary-level
+ROUGE-N scores as the final multiple reference
+ROUGE-N score. This can be written as follows:
+ROUGE-Nmulti = argmaxi ROUGE-N(ri ,s)
+This procedure is also applied to computation of
+ROUGE-L (Section 3), ROUGE-W (Section 4) , and
+ROUGE-S (Section 5). In the implementation, we use
+a Jackknifing procedure. Given M references, we
+compute the best score over M sets of M-1 references. The final ROUGE-N score is the average of
+the M ROUGE-N scores using different M-1 references. The Jackknifing procedure is adopted since
+we often need to compare system and human performance and the reference summaries are usually
+the only human summaries available. Using this
+procedure, we are able to estimate average human
+performance by averaging M ROUGE-N scores of
+one reference vs. the rest M-1 references. Although
+the Jackknif ing procedure is not necessary when we
+just want to compute ROUGE scores using multiple
+references, it is applied in all ROUGE score computations in the ROUGE evaluation package.
+In the next section, we describe a ROUGE measure
+based on longest common subsequences between
+two summaries.
+3

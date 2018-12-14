@@ -18,44 +18,65 @@ def filtre(src,dst,element):
 		txt = src.read()
 		
 	#-----------Résumé-----------									# lecture du fichier dans une variable string
-		if "ABSTRACT" in txt :										# blocs de conditions pour identifier le début du résumé  
-			debut = txt.split("ABSTRACT",1)						
-								
-		if "Abstract" in txt :
-			debut = txt.split("Abstract",1)
-		
-		fin="1"
-		if "Keywords" in txt :										# blocs de conditions pour identifier la fin du résumé
-			fin="Keywords"
-			
-		elif "Index" in txt :
-			fin="Index"
-		
-		a1 = debut[1].split(fin)
-		a2 = a1[0].split("\n")
+		a2 = Resume(txt)
 		dst.write("Resumé : ")
 		for i in range(0,len(a2)) :									# ecriture du résumé dans le fichier de destination sur une seule ligne (troisieme ligne)
 			dst.write(a2[i])
 			
 	#----------Auteurs------------
-		txt = txt.lower()
-		ok = titre2.split(" ")
-		ok2 = ok[len(ok)-1]
-		ok2 = ok2.lower()
-		print(ok2)
-		if ok2 in txt :
-			auteur = txt.split(ok2)
-			#if "ABSTRACT" in txt :										 
-			#	auteur2 = auteur[1].split("ABSTRACT",1)						
-								
-			if "abstract" in txt :
-				auteur2 = auteur[1].split("abstract",1)
 		
-			dst.write("\n"+"Auteur : "+auteur2[0])
+		dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
 				
 	#----------Biblio-------------
-	
 		
+		dst.write("\n"+"Biblio : "+Biblio(txt))
+
+
+def Resume(Content):
+	if "ABSTRACT" in Content :										# blocs de conditions pour identifier le début du résumé  
+		debut = Content.split("ABSTRACT",1)						
+								
+	if "Abstract" in Content :
+		debut = Content.split("Abstract",1)
+		
+	fin="1"
+	if "Keywords" in Content :										# blocs de conditions pour identifier la fin du résumé
+		fin="Keywords"
+			
+	elif "Index" in Content :
+		fin="Index"
+		
+	a1 = debut[1].split(fin)
+	a2 = a1[0].split("\n")
+	return a2
+
+
+
+def Auteur(Content,titre):
+	texte = Content.lower()
+	titre2 = titre.split(" ")
+	mot = titre2[len(titre2)-1]
+	mot = mot.lower()
+	if mot in texte :
+		auteur = texte.split(mot)
+		auteur2 = auteur[1].split("abstract",1)
+		return auteur2[0]
+
+
+
+
+def Biblio(normalContent):
+	lowerContent = normalContent.lower()
+	indexFound = lowerContent.find("references\n")
+	if indexFound == -1 :
+		return "bibliography not found"
+	indexFound += len("references\n")
+	normalContent = normalContent[indexFound:]
+	indexFound = normalContent.find("\n\n");
+	if indexFound == -1 :
+		return "bibliography not found"
+	normalContent = normalContent[:indexFound]
+	return normalContent
 
 
 def transmog(arg):

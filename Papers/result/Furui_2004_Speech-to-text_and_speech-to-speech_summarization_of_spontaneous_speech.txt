@@ -5,3 +5,44 @@ Auteur :  and audio processing, vol. 12, no. 4, july 2004
 
 401
 
+
+Biblio : [1] S. Furui, K. Iwano, C. Hori, T. Shinozaki, Y. Saito, and S. Tamura,
+“Ubiquitous speech processing,” in Proc. ICASSP2001, vol. 1, Salt Lake
+City, UT, 2001, pp. 13–16.
+[2] S. Furui, “Recent advances in spontaneous speech recognition and understanding,” in Proc. ISCA-IEEE Workshop on Spontaneous Speech
+Processing and Recognition, Tokyo, Japan, 2003.
+[3] I. Mani and M. T. Maybury, Eds., Advances in Automatic Text Summarization. Cambridge, MA: MIT Press, 1999.
+[4] J. Alexandersson and P. Poller, “Toward multilingual protocol generation for spontaneous dialogues,” in Proc. INLG-98, Niagara-on-the-lake,
+Canada, 1998.
+[5] K. Zechner and A. Waibel, “Minimizing word error rate in textual summaries of spoken language,” in Proc. NAACL, Seattle, WA, 2000.
+[6] J. S. Garofolo, E. M. Voorhees, C. G. P. Auzanne, and V. M. Stanford,
+“Spoken document retrieval: 1998 evaluation and investigation of new
+metrics,” in Proc. ESCA Workshop: Accessing Information in Spoken
+Audio, Cambridge, MA, 1999, pp. 1–7.
+[7] R. Valenza, T. Robinson, M. Hickey, and R. Tucker, “Summarization of
+spoken audio through information extraction,” in Proc. ISCA Workshop
+on Accessing Information in Spoken Audio, Cambridge, MA, 1999, pp.
+111–116.
+[8] K. Koumpis and S. Renals, “Transcription and summarization of voicemail speech,” in Proc. ICSLP 2000, 2000, pp. 688–691.
+[9] K. Maekawa, H. Koiso, S. Furui, and H. Isahara, “Spontaneous speech
+corpus of Japanese,” in Proc. LREC2000, Athens, Greece, 2000, pp.
+947–952.
+[10] T. Kikuchi, S. Furui, and C. Hori, “Two-stage automatic speech summarization by sentence extraction and compaction,” in Proc. ISCA-IEEE
+Workshop on Spontaneous Speech Processing and Recognition, Tokyo,
+Japan, 2003.
+[11] C. Hori and S. Furui, “Advances in automatic speech summarization,”
+in Proc. Eurospeech 2001, 2001, pp. 1771–1774.
+[12] C. Hori, S. Furui, R. Malkin, H. Yu, and A. Waibel, “A statistical approach to automatic speech summarization,” EURASIP J. Appl. Signal
+Processing, pp. 128–139, 2003.
+[13] K. Knight and D. Marcu, “Summarization beyond sentence extraction:
+A probabilistic approach to sentence compression,” Artific. Intell., vol.
+139, pp. 91–107, 2002.
+[14] H. Daume III and D. Marcu, “A noisy-channel model for document compression,” in Proc. ACL-2002, Philadelphia, PA, 2002, pp. 449–456.
+[15] C.-Y. Lin and E. Hovy, “From single to multi-document summarization:
+A prototype system and its evaluation,” in Proc. ACL-2002, Philadelphia, PA, 2002, pp. 457–464.
+[16] M. Hirohata, Y. Shinnaka, and S. Furui, “A study on important sentence
+extraction methods using SVD for automatic speech summarization,”
+in Proc. Acoustical Society of Japan Autumn Meeting, Nagoya, Japan,
+2003.
+[17] K. Zechner, “Spoken language condensation in the 21st Century,” in
+Proc. Eurospeech, Geneva, Switzerland, 2003, pp. 1989–1992.

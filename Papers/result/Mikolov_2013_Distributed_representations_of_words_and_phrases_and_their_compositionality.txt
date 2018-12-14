@@ -28,3 +28,43 @@ google inc.
 mountain view
 gcorrado@google.com
 
+
+Biblio : [1] Yoshua Bengio, Réjean Ducharme, Pascal Vincent, and Christian Janvin. A neural probabilistic language
+model. The Journal of Machine Learning Research, 3:1137–1155, 2003.
+[2] Ronan Collobert and Jason Weston. A unified architecture for natural language processing: deep neural networks with multitask learning. In Proceedings of the 25th international conference on Machine
+learning, pages 160–167. ACM, 2008.
+[3] Xavier Glorot, Antoine Bordes, and Yoshua Bengio. Domain adaptation for large-scale sentiment classification: A deep learning approach. In ICML, 513–520, 2011.
+[4] Michael U Gutmann and Aapo Hyvärinen. Noise-contrastive estimation of unnormalized statistical models, with applications to natural image statistics. The Journal of Machine Learning Research, 13:307–361,
+2012.
+[5] Tomas Mikolov, Stefan Kombrink, Lukas Burget, Jan Cernocky, and Sanjeev Khudanpur. Extensions of
+recurrent neural network language model. In Acoustics, Speech and Signal Processing (ICASSP), 2011
+IEEE International Conference on, pages 5528–5531. IEEE, 2011.
+[6] Tomas Mikolov, Anoop Deoras, Daniel Povey, Lukas Burget and Jan Cernocky. Strategies for Training
+Large Scale Neural Network Language Models. In Proc. Automatic Speech Recognition and Understanding, 2011.
+[7] Tomas Mikolov. Statistical Language Models Based on Neural Networks. PhD thesis, PhD Thesis, Brno
+University of Technology, 2012.
+[8] Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. Efficient estimation of word representations
+in vector space. ICLR Workshop, 2013.
+[9] Tomas Mikolov, Wen-tau Yih and Geoffrey Zweig. Linguistic Regularities in Continuous Space Word
+Representations. In Proceedings of NAACL HLT, 2013.
+[10] Andriy Mnih and Geoffrey E Hinton. A scalable hierarchical distributed language model. Advances in
+neural information processing systems, 21:1081–1088, 2009.
+[11] Andriy Mnih and Yee Whye Teh. A fast and simple algorithm for training neural probabilistic language
+models. arXiv preprint arXiv:1206.6426, 2012.
+[12] Frederic Morin and Yoshua Bengio. Hierarchical probabilistic neural network language model. In Proceedings of the international workshop on artificial intelligence and statistics, pages 246–252, 2005.
+[13] David E Rumelhart, Geoffrey E Hintont, and Ronald J Williams. Learning representations by backpropagating errors. Nature, 323(6088):533–536, 1986.
+[14] Holger Schwenk. Continuous space language models. Computer Speech and Language, vol. 21, 2007.
+[15] Richard Socher, Cliff C. Lin, Andrew Y. Ng, and Christopher D. Manning. Parsing natural scenes and
+natural language with recursive neural networks. In Proceedings of the 26th International Conference on
+Machine Learning (ICML), volume 2, 2011.
+[16] Richard Socher, Brody Huval, Christopher D. Manning, and Andrew Y. Ng. Semantic Compositionality
+Through Recursive Matrix-Vector Spaces. In Proceedings of the 2012 Conference on Empirical Methods
+in Natural Language Processing (EMNLP), 2012.
+[17] Joseph Turian, Lev Ratinov, and Yoshua Bengio. Word representations: a simple and general method for
+semi-supervised learning. In Proceedings of the 48th Annual Meeting of the Association for Computational Linguistics, pages 384–394. Association for Computational Linguistics, 2010.
+[18] Peter D. Turney and Patrick Pantel. From frequency to meaning: Vector space models of semantics. In
+Journal of Artificial Intelligence Research, 37:141-188, 2010.
+[19] Peter D. Turney. Distributional semantics beyond words: Supervised learning of analogy and paraphrase.
+In Transactions of the Association for Computational Linguistics (TACL), 353–366, 2013.
+[20] Jason Weston, Samy Bengio, and Nicolas Usunier. Wsabie: Scaling up to large vocabulary image annotation. In Proceedings of the Twenty-Second international joint conference on Artificial Intelligence-Volume
+Volume Three, pages 2764–2770. AAAI Press, 2011.

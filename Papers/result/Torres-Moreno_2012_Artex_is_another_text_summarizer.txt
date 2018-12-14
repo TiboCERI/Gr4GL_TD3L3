@@ -11,5 +11,33 @@ laboratoire informatique d’avignon,
 bp 91228 84911, avignon, cedex 09, france
 juan-manuel.torres@univ-avignon.fr
 2
-École polytechnique de montréal,
+école polytechnique de montréal,
 cp. 6128 succursale centre-ville, montréal, québec, canada
+
+Biblio : [1] Iria da Cunha, Silvia Fernández, Patricia Velázquez-Morales, Jorge Vivaldi, Eric SanJuan, and
+Juan Manuel Torres-Moreno. A new hybrid summarizer based on vector space model, statistical
+physics and linguistics. In Proceedings of the 6th Mexican International Conference on Advances in
+Artificial Intelligence (MICAI’07), pages 872–882, Aguascalientes, Mexico, 2007. Springer-Verlag.
+[2] Harold Daumé III. Practical structured learning techniques for natural language processing. PhD
+thesis, Los Angeles, CA, 2006.
+[3] H. P. Edmundson. New Methods in Automatic Extraction. Journal of the Association for Computing Machinery, 16(2):264–285, 1969.
+[4] B. Favre, F. Béchet, P. Bellot, F. Boudin, M. El-Bèze, L. Gillard, G. Lapalme, and J-M. TorresMoreno. The LIA-Thales summarization system at DUC-2006. In Proceedings of the Document Understanding Conference (DUC’06), Brooklyn, New York, United States, 2006. http://duc.nist.gov.
+[5] Silvia Fernández, Eric SanJuan, and Juan-Manuel Torres-Moreno. Textual Energy of Associative Memories: performants applications of Enertex algorithm in text summarization and topic
+segmentation. In Proceedings of the Mexican International Conference on Artificial Intelligence
+(MICAI’07), pages 861–871, Aguascalientes, Mexico, 2007. Springer-Verlag.
+[6] J. Kupiec, J. Pedersen, and F. Chen. A trainable document summarizer. In Proceedings of the
+18th Conference ACM Special Interest Group on Information Retrieval (SIGIR’95), pages 68–73,
+Seattle, WA, United States, 1995. ACM Press, New York.
+[7] Chin-Yew Lin. ROUGE: A Package for Automatic Evaluation of Summaries. In Marie-Francine
+Moens and Stan Szpakowicz, editors, Proceedings of the Workshop Text Summarization Branches
+Out (ACL’04), pages 74–81, Barcelone, Spain, july 2004. ACL.
+[8] Annie Louis and Ani Nenkova. Automatic Summary Evaluation without Human Models. In First
+Text Analysis Conference (TAC’08), Gaithersburg, MD, United States, 17-19 November 2008.
+[9] H.P. Luhn. The Automatic Creation of Literature Abstracts. IBM Journal of Research and
+Development, 2(2):159–165, 1958.
+[10] I. Mani and M. Mayburi. Advances in Automatic Text Summarization. MIT Press, Cambridge,
+1999.
+[11] Eric SanJuan, Patrice Bellot, Véronique Moriceau, and Xavier Tannier. Overview of the INEX
+2010 Question Answering Track (QA@INEX). In Shlomo Geva, Jaap Kamps, Ralf Schenkel, and
+Andrew Trotman, editors, Comparative Evaluation of Focused Retrieval, volume 6932 of Lecture
+Notes in Computer Science, pages 269–281. Springer Berlin / Heidelberg, 2011.
