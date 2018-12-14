@@ -55,7 +55,7 @@ def Resume(Content):
 def Auteur(Content,titre):
 	texte = Content.lower()
 	titre2 = titre.split(" ")
-	mot = titre2[len(titre2)-1]
+	mot = titre2[len(titre2)-2]+" "+titre2[len(titre2)-1]
 	mot = mot.lower()
 	if mot in texte :
 		auteur = texte.split(mot)
@@ -67,7 +67,10 @@ def Auteur(Content,titre):
 
 def Biblio(normalContent):
 	lowerContent = normalContent.lower()
-	indexFound = lowerContent.find("references\n")
+	if " references" in lowerContent:
+		indexFound = lowerContent.find("\nreferences\n")
+	else:
+		indexFound = lowerContent.find("references\n")
 	if indexFound == -1 :
 		return "bibliography not found"
 	indexFound += len("references\n")
