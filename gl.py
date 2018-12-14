@@ -9,13 +9,25 @@ def filtre(src,dst,element):
 	#-----------Nom du PDF-----------
 		titre = element.replace('.txt','').replace('_',' ') 		# on remplace les underscore par des espaces et on enleve l'extension du fichier 
 		dst.write("Nom du pdf : "+titre+"\n")	
+		txt = src.read()
 	#-----------Titre-----------							 		# on ecrit le nom du pdf dans le fichier de destination (premiere ligne)					
 		for i in range(2000,2019) :								
 			if str(i) in titre :
 				annee = str(i)	
 		titre2 = titre.split(annee)[1]
-		dst.write("Titre : "+  titre2 + "\n")  		# on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)
-		txt = src.read()
+		if "Rouge" in titre :
+			titre1 = txt.split("ROUGE:")
+			titre2 = titre1[1].split("\n")[0]
+			dst.write("Titre : "+  titre2 + "\n")
+		elif "naive bayes" in titre:
+			titre1 = txt.split("\n")
+			print(titre1)
+			#titre2 = titre1[1].split("\n")
+		else:  
+			dst.write("Titre : "+  titre2 + "\n")  		# on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)
+			
+		
+				
 		
 	#-----------Résumé-----------									# lecture du fichier dans une variable string
 		a2 = Resume(txt)
@@ -24,8 +36,10 @@ def filtre(src,dst,element):
 			dst.write(a2[i])
 			
 	#----------Auteurs------------
-		
-		dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
+		if "ROUGE:" in txt :
+			dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
+		else :
+			dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
 				
 	#----------Biblio-------------
 		
@@ -55,6 +69,7 @@ def Resume(Content):
 def Auteur(Content,titre):
 	texte = Content.lower()
 	titre2 = titre.split(" ")
+	#print(titre2)
 	mot = titre2[len(titre2)-2]+" "+titre2[len(titre2)-1]
 	mot = mot.lower()
 	if mot in texte :

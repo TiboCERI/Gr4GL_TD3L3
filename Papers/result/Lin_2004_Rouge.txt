@@ -1,7 +1,14 @@
 Nom du pdf : Lin 2004 Rouge
-Titre :  Rouge
+Titre :  A Package for Automatic Evaluation of Summaries
 Resumé : ROUGE stands for Recall-Oriented Understudy forGisting Evaluation. It includes measures to automatically determine the quality of a summary bycomparing it to other (ideal) summaries created byhumans. The measures count the number of overlapping units such as n-gram, word sequences, andword pairs between the computer-generated summary to be evaluated and the ideal summaries created by humans. This paper introduces four differentROUGE measures: ROUGE-N, ROUGE-L, ROUGE-W,and ROUGE-S included in the ROUGE summarization evaluation package and their evaluatio ns. Threeof them have been used in the Document Understanding Conference (DUC) 2004, a large-scalesummarization evaluation sponsored by NIST.
-Auteur : -n,
+Auteur : 
+chin-yew lin
+information sciences institute
+university of southern california
+4676 admiralty way
+marina del rey, ca 90292
+cyl@isi.edu
+
 Biblio : 
 Cormen, T. R., C. E. Leiserson, and R. L. Rivest.
 1989. Introduction to Algorithms. The MIT Press.
