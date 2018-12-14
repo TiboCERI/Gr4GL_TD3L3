@@ -1,25 +1,5 @@
 Nom du pdf : Levner 2007 Fuzzifying clustering algorithms The case study of MajorClust
 Titre :  Fuzzifying clustering algorithms The case study of MajorClust
 Resumé : . Among various document clustering algorithms that havebeen proposed so far, the most useful are those that automatically reveal the number of clusters and assign each target document to exactlyone cluster. However, in many real situations, there not exists an exactboundary between different clusters. In this work, we introduce a fuzzyversion of the MajorClust algorithm. The proposed clustering methodassigns documents to more than one category by taking into accounta membership function for both, edges and nodes of the correspondingunderlying graph. Thus, the clustering problem is formulated in termsof weighted fuzzy graphs. The fuzzy approach permits to decrease somenegative effects which appear in clustering of large-sized corpora withnoisy data.
-Auteur : 
-eugene levner1 , david pinto(2,3) , paolo rosso2 ,
-david alcaide4 , r.r.k. sharma5
-1
-
-2
-
-holon institute of technology, holon, israel
-department of information systems and computation, upv, spain
-3
-faculty of computer science, buap, mexico
-4
-universidad de la laguna, tenerife, spain
-5
-indian institute of technology, kanpur, india
-levner@hit.ac.il, {dpinto, prosso}@dsic.upv.es,
-dalcaide@ull.es, rrks@iitk.ac.in
-
-
-Biblio : 1. MacKay, D.J.: Information Theory, Inference and Learning Algorithms. Cambridge
-University Press (2003)
-2. Mirkin, B.: Mathematical Classification and Clustering. Springer (1996)
+Auteur :   ;  eugene levner1 , david pinto(2,3) , paolo rosso2 ,  ;  david alcaide4 , r.r.k. sharma5  ;  1  ;    ;  2  ;    ;  holon institute of technology, holon, israel  ;  department of information systems and computation, upv, spain  ;  3  ;  faculty of computer science, buap, mexico  ;  4  ;  universidad de la laguna, tenerife, spain  ;  5  ;  indian institute of technology, kanpur, india  ;  levner@hit.ac.il, {dpinto, prosso}@dsic.upv.es,  ;  dalcaide@ull.es, rrks@iitk.ac.in  ;    ;  
+Biblio : 1. MacKay, D.J.: Information Theory, Inference and Learning Algorithms. Cambridge University Press (2003) 2. Mirkin, B.: Mathematical Classification and Clustering. Springer (1996)

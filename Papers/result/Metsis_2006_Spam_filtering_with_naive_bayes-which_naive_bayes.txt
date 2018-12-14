@@ -1,34 +1,16 @@
 Nom du pdf : Metsis 2006 Spam filtering with naive bayes-which naive bayes
+Titre : Spam Filtering with Naive Bayes – Which Naive Bayes?
 Resumé : Naive Bayes is very popular in commercial and open-sourceanti-spam e-mail filters. There are, however, several formsof Naive Bayes, something the anti-spam literature does notalways acknowledge. We discuss five different versions ofNaive Bayes, and compare them on six new, non-encodeddatasets, that contain ham messages of particular Enronusers and fresh spam messages. The new datasets, whichwe make publicly available, are more realistic than previouscomparable benchmarks, because they maintain the temporal order of the messages in the two categories, and theyemulate the varying proportion of spam and ham messagesthat users receive over time. We adopt an experimentalprocedure that emulates the incremental training of personalized spam filters, and we plot roc curves that allow us tocompare the different versions of nb over the entire tradeoffbetween true positives and true negatives.
-Auteur :  – which 
-Biblio : 
-[1] I. Androutsopoulos, J. Koutsias, K. Chandrinos, and
-C. Spyropoulos. An experimental comparison of Naive
-Bayesian and keyword-based anti-spam filtering with
-encrypted personal e-mail messages. In 23rd ACM
-SIGIR Conference, pages 160–167, Athens, Greece,
-2000.
-[2] I. Androutsopoulos, G. Paliouras, and E. Michelakis.
-Learning to filter unsolicited commercial e-mail.
-technical report 2004/2, NCSR “Demokritos”, 2004.
-[3] R. Beckermann, A. McCallum, and G. Huang.
-Automatic categorization of email into folders:
-benchmark experiments on Enron and SRI corpora.
-Technical report IR-418, University of Massachusetts
-Amherst, 2004.
-[4] X. Carreras and L. Marquez. Boosting trees for
-anti-spam email filtering. In 4th International
-Conference on Recent Advances in Natural Language
-Processing, pages 58–64, Tzigov Chark, Bulgaria,
-2001.
-[5] P. Domingos and M. Pazzani. On the optimality of the
-simple Bayesian classifier under zero-one loss. Machine
-Learning, 29(2–3):103130, 1997.
-[6] H. D. Drucker, D. Wu, and V. Vapnik. Support Vector
-Machines for spam categorization. IEEE Transactions
-On Neural Networks, 10(5):1048–1054, 1999.
-[7] S. Eyheramendy, D. Lewis, and D. Madigan. On the
-Naive Bayes model for text categorization. In 9th
-International Workshop on Artificial Intelligence and
-Statistics, pages 332–339, Key West, Florida, 2003.
-[8] T. Fawcett. In “vivo” spam filtering: a challenge
+Auteur :   ;  vangelis metsis  ;    ;  †  ;    ;  institute of informatics and  ;  telecommunications,  ;  n.c.s.r. “demokritos”,  ;  athens, greece  ;    ;  ion androutsopoulos  ;    ;  georgios paliouras  ;    ;  department of informatics,  ;  athens university of  ;  economics and business,  ;  athens, greece  ;    ;  institute of informatics and  ;  telecommunications,  ;  n.c.s.r. “demokritos”,  ;  athens, greece  ;    ;  
+Biblio :  [1] I. Androutsopoulos, J. Koutsias, K. Chandrinos, and C. Spyropoulos. An experimental comparison of Naive Bayesian and keyword-based anti-spam filtering with encrypted personal e-mail messages. In 23rd ACM SIGIR Conference, pages 160–167, Athens, Greece, 2000  
+  [2] I. Androutsopoulos, G. Paliouras, and E. Michelakis  
+  Learning to filter unsolicited commercial e-mail  
+  technical report 2004/2, NCSR “Demokritos”, 2004  
+  [3] R. Beckermann, A. McCallum, and G. Huang  
+  Automatic categorization of email into folders: benchmark experiments on Enron and SRI corpora  
+  Technical report IR-418, University of Massachusetts Amherst, 2004  
+  [4] X. Carreras and L. Marquez. Boosting trees for anti-spam email filtering. In 4th International Conference on Recent Advances in Natural Language Processing, pages 58–64, Tzigov Chark, Bulgaria, 2001  
+  [5] P. Domingos and M. Pazzani. On the optimality of the simple Bayesian classifier under zero-one loss. Machine Learning, 29(2–3):103130, 1997  
+  [6] H. D. Drucker, D. Wu, and V. Vapnik. Support Vector Machines for spam categorization. IEEE Transactions On Neural Networks, 10(5):1048–1054, 1999  
+  [7] S. Eyheramendy, D. Lewis, and D. Madigan. On the Naive Bayes model for text categorization. In 9th International Workshop on Artificial Intelligence and Statistics, pages 332–339, Key West, Florida, 2003  
+  [8] T. Fawcett. In “vivo” spam filtering: a challenge

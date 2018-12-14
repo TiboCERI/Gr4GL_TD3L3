@@ -21,8 +21,8 @@ def filtre(src,dst,element):
 			dst.write("Titre : "+  titre2 + "\n")
 		elif "naive bayes" in titre:
 			titre1 = txt.split("\n")
-			print(titre1)
-			#titre2 = titre1[1].split("\n")
+			titre2 = titre1[0]
+			dst.write("Titre : "+  titre2 + "\n")
 		else:  
 			dst.write("Titre : "+  titre2 + "\n")  		# on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)
 			
@@ -36,10 +36,8 @@ def filtre(src,dst,element):
 			dst.write(a2[i])
 			
 	#----------Auteurs------------
-		if "ROUGE:" in txt :
-			dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
-		else :
-			dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
+		
+		dst.write("\n"+"Auteur : "+Auteur(txt,titre2))
 				
 	#----------Biblio-------------
 		
@@ -75,7 +73,9 @@ def Auteur(Content,titre):
 	if mot in texte :
 		auteur = texte.split(mot)
 		auteur2 = auteur[1].split("abstract",1)
-		return auteur2[0]
+		enligne = auteur2[0].replace('\n',"  ;  ")
+		return enligne
+		
 
 
 
@@ -93,8 +93,10 @@ def Biblio(normalContent):
 	indexFound = normalContent.find("\n\n");
 	if indexFound == -1 :
 		return "bibliography not found"
-	normalContent = normalContent[:indexFound]
-	return normalContent
+	normalContent = normalContent[:indexFound]	
+	contentOnLine = normalContent.replace(".\n","  ;  ").replace("\n"," ")
+	contentOnLine = contentOnLine.replace(";", "\n")
+	return contentOnLine
 
 
 def transmog(arg):
