@@ -26,6 +26,22 @@ def Resume(Content):
     a = ''.join(a2)
     return a
 
+def Intro(Content):
+    debut = Content.split("Introduction\n",1)
+    fin=".\n\n"
+    a = debut[0].split(fin)
+    a1 = a[0].split("\n\n")
+    a = ''.join(a1)
+    return a
+
+def Conclusion(Content):
+    debut = Content.split("Conclusions\n",1)
+    fin=".\n\n"
+    a = debut[0].split(fin)
+    a1 = a[0].split("\n\n")
+    a = ''.join(a1)
+    return a
+
 def Auteur(Content,titre):
     texte = Content.lower()
     titre2 = titre.split(" ")
@@ -188,14 +204,14 @@ def createXmlFile(src,dst,title,rwt):
     else:  
         userelement1 = ET.SubElement(root,"titre").text = titre2  
     userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, titre2)
+
     userelement3 = ET.SubElement(root,"abstract").text = Resume(txt)
 
-    userelement4 = ET.SubElement(root,"introduction")
-    unknow = u"\u2022"
-    corp = txt.split("introduction")[0].split("acknowledgements")[0].replace(unknow,'X')
-    userelement5 = ET.SubElement(root,"corps").text = corp
-    conclu =  txt.split("references")[0].split("conclusions")[0]
-    userelement6 = ET.SubElement(root,"conclusions").text = conclu
+    userelement4 = ET.SubElement(root,"introduction").text = Intro(txt)
+   
+    userelement5 = ET.SubElement(root,"corps")
+
+    userelement6 = ET.SubElement(root,"conclusions").text = Conclusion(txt)
 
     userelement7 = ET.SubElement(root,"discussion")
 
@@ -280,7 +296,7 @@ else:
         pdf(directory)
         createFichierXml(directory) 
         t = "{}/tmp".format(directory)
-        shutil.rmtree(t) 
+        #shutil.rmtree(t) 
     # Terminer le programme si l'argument de type de sortie n'égale ni à txt ni à xml 
     else :
         print(bcolors.FAIL + "Ooops le type de sortie est inconnue" + bcolors.ENDC)
