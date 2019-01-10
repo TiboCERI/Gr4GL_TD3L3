@@ -3,15 +3,16 @@
 ### ******* version 3.0.0 *******
 Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
 #### Authors:
--Nizar REZAIGUI (SCRUM Master)
 
--Thibaut CHASTELLIERE
+-Nizar REZAIGUI (SCRUM Master) -----> Krs-ceri
 
--Florian FEUILLEPAIN
+-Thibaut CHASTELLIERE   -----> TiboCERI
 
--Zinedine MAKHLOUF
+-Florian FEUILLEPAIN  ------> FlorianFeuillepain
 
--Hafsa LAACHIRI
+-Zinedine MAKHLOUF  ------> AngryTaiga
+
+-Hafsa LAACHIRI   ------> hflaachiri
 
 #### Prerequisites :
 vous devez installez :
@@ -19,7 +20,7 @@ vous devez installez :
 lxml
 ```
 #### Installing :
-Sous LINUX dans une fenetre de commande tapez :
+Pour installer lxml sous LINUX dans une fenetre de commande tapez :
 ````console
 $ sudo apt-get install python3-lxml
 ````
