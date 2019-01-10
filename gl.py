@@ -5,6 +5,19 @@ import os       #commande de base
 import os.path  #le path du program
 import shutil   #pour suprimmer récursivement
 
+def biblioFinder(normalContent, lowerContent) :
+	
+	indexFound = lowerContent.find("\nreferences\n")
+	if indexFound == -1 :
+		return "bibliography not found"
+	indexFound += len("\nreferences\n")
+	normalContent = normalContent[indexFound:]
+	indexFound = normalContent.find("\n\n");
+	if indexFound == -1 :
+		return "bibliography not found"
+	normalContent = normalContent[:indexFound]
+	return normalContent
+
 def filtre(src,dst,element):
         # on remplace les underscore par des espaces et on enleve l'extension du fichier 
 		titre = element.replace('.txt','').replace('_',' ')
@@ -51,6 +64,11 @@ def filtre(src,dst,element):
 				auteur2 = auteur[1].split("abstract",1)
 		
 			dst.write("\n"+"Auteur : "+auteur2[0])
+        # bibliographie
+        #contenu = src.read()
+        #contenuLowerCase = contenu.lower()
+        # biblioFinder(contenu, contenuLowerCase)
+        dst.write("\n"+"References :\n"biblioFinder(src.read(), txt)
 		
 
 
@@ -96,8 +114,38 @@ def pdf(directoryPath):
             pdfToTextCommand = "pdftotext -f 1 {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
             # Executer la commande de conversion
             os.system(pdfToTextCommand)
-          
-            
+
+def createXmlFile(text):
+				
+		filename = text+".xml"
+		
+		root = ET.Element("article")
+		userelement = ET.SubElement(root,"preamble")
+		userelement1 = ET.SubElement(root,"titre")
+		userelement2 = ET.SubElement(root,"auteur")
+		userelement3 = ET.SubElement(root,"abstract")
+		userelement4 = ET.SubElement(root,"corps")
+		userelement5 = ET.SubElement(root,"conclusions")
+		userelement6 = ET.SubElement(root,"biblio")
+		
+		tree= ET.ElementTree(root)
+		tree.write(filename)        
+
+
+def createFichierXml() :	
+	listFichierPdf = os.listdir('.') 
+
+	dir_path = os.path.dirname(os.path.abspath(__file__))
+
+	for i in listFichierPdf :
+		if i.endswith(".pdf"):
+					  s = os.path.splitext(os.path.basename(i))[0]
+					  b= i.replace(' ', '_')
+					  os.rename (i , b)
+					  cmd=  'pdftotext -nopgbrk ' + b  + ' ' + s +'.txt'
+					  os.system( cmd )
+					  createXmlFile(s)
+
     
 
 # code des couleurs
