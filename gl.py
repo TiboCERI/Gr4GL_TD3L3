@@ -6,6 +6,17 @@ import os.path  #le path du program
 import shutil   #pour suprimmer récursivement
 
 
+def Auteur(Content,titre):
+    texte = Content.lower()
+    titre2 = titre.split(" ")
+    #print(titre2)
+    mot = titre2[len(titre2)-2]+" "+titre2[len(titre2)-1]
+    mot = mot.lower()
+    if mot in texte :
+        auteur = texte.split(mot)
+        auteur2 = auteur[1].split("abstract",1)
+        enligne = auteur2[0].replace('\n',"  ;  ")
+        return enligne
 
 def Biblio(normalContent):
     lowerContent = normalContent.lower()
