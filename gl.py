@@ -23,7 +23,8 @@ def Resume(Content):
         
     a1 = debut[1].split(fin)
     a2 = a1[0].split("\n")
-    return a2
+    a = ''.join(a2)
+    return a
 
 def Auteur(Content,titre):
     texte = Content.lower()
@@ -108,6 +109,9 @@ def filtre(src,dst,element):
         
         dst.write("\n"+"Biblio : "+Biblio(txt))
 
+    #---------Corps--------------
+        dst.write("Corps : " +txt.split("references")[1].split("\n\n")[0]+"\n")
+
 
 def transmog(arg):
     tmp = "{}/result".format(arg)
@@ -185,9 +189,17 @@ def createXmlFile(src,dst,title,rwt):
         userelement1 = ET.SubElement(root,"titre").text = titre2  
     userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, titre2)
     userelement3 = ET.SubElement(root,"abstract").text = Resume(txt)
-    userelement4 = ET.SubElement(root,"corps")
-    userelement5 = ET.SubElement(root,"conclusions")
-    userelement6 = ET.SubElement(root,"biblio").text = Biblio(txt)
+
+    userelement4 = ET.SubElement(root,"introduction")
+    unknow = u"\u2022"
+    corp = txt.split("introduction")[0].split("acknowledgements")[0].replace(unknow,'X')
+    userelement5 = ET.SubElement(root,"corps").text = corp
+    conclu =  txt.split("references")[0].split("conclusions")[0]
+    userelement6 = ET.SubElement(root,"conclusions").text = conclu
+
+    userelement7 = ET.SubElement(root,"discussion")
+
+    userelement8 = ET.SubElement(root,"biblio").text = Biblio(txt)
         
     tree= ET.ElementTree(root)
     tree.write(filename)        
