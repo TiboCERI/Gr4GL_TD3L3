@@ -5,7 +5,24 @@ import os       #commande de base
 import os.path  #le path du program
 import shutil   #pour suprimmer récursivement
 
-
+def Resume(Content):
+    if "ABSTRACT" in Content :                                      # blocs de conditions pour identifier le début du résumé  
+        debut = Content.split("ABSTRACT",1)                     
+                                
+    if "Abstract" in Content :
+        debut = Content.split("Abstract",1)
+        
+    fin="1"
+    if "Keywords" in Content :                                      # blocs de conditions pour identifier la fin du résumé
+        fin="Keywords"
+            
+    elif "Index" in Content :
+        fin="Index"
+        
+    a1 = debut[1].split(fin)
+    a2 = a1[0].split("\n")
+    return a2
+    
 def Auteur(Content,titre):
     texte = Content.lower()
     titre2 = titre.split(" ")
