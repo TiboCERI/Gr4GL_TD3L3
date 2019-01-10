@@ -27,56 +27,108 @@ def Resume(Content):
     return a
 
 def Intro(Content):
-if "Introduction" in Content :
-        debut = Content.split("Introduction\n",1)
-        if "Mikolov" in Content:
-            fin = "2 "
-        else:
-            fin = "2\n"
-        a=debut[1].split(fin)
-        a1=a[0] 
-        return a1
-        
-    elif "INTRODUCTION" :
-        debut = Content.split("INTRODUCTION\n",1)
-        if "Naive" in Content:
-            fin = "2."
-        else :
-            fin = "2\n"
-        a=debut[1].split(fin)
-        a1=a[0]
-        return a1
+	if "Introduction" in Content :
+		debut = Content.split("Introduction\n",1)
+		if "Mikolov" in Content:
+			fin = "2 "
+		else:
+			fin = "2\n"
+		a=debut[1].split(fin)
+		a1=a[0]
+		a = ''.join(a1)
+
+		return a
+		
+	elif "INTRODUCTION" :
+		debut = Content.split("INTRODUCTION\n",1)
+		if "Naive" in Content:
+			fin = "2."
+		else :
+			fin = "2\n"
+		a=debut[1].split(fin)
+		a1=a[0]
+		a = ''.join(a1)
+
+		return a
+		
 
 def Conclusion(Content):
-    if "Conclusion" in Content:
-        debut = Content.split("Conclusion",1)
-        fin="references\n"
-        a = debut[1].split(fin)
-        a1 = a[0].split("\n")
-        a = ''.join(a1)
-        return a
+	if "Conclusion" in Content:
+		debut = Content.split("Conclusion",1)
+		if "Acknowledgments" in Content:
+			fin= "Acknowledgments"
+		elif "Acknowledgements" in Content:
+			fin= "Acknowledgements"
+		else:
+			fin= "References\n"
+		
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+	elif "CONCLUSION" :
+		
+		debut = Content.split("CONCLUSION",1)
+		if "ACKNOWLEDGMENT" in Content:
+			fin= "ACKNOWLEDGMENT"
+		else:
+			fin= "REFERENCES\n"
+		
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+	else:
+		return "Conclusion MARCHE PAS"
 
 def Corpse(Content):
-    if "Introduction" in Content:
-        debut = Content.split("Introduction",1)
+	if "Introduction" in Content:
+		debut = Content.split("Introduction",1)
         
-        if "Acknowledgements" in Content:
-            fin = "Acknowledgements"
-        else:
-            fin = "References"
-        a = debut[1].split(fin)
-        a1 = a[0].split("\n")
-        a = ''.join(a1)
-        return a
+		if "Acknowledgments" in Content:
+			fin = "Acknowledgments"
+		else:
+			fin = "References"
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+	elif "INTRODUCTION" in Content:
+		debut = Content.split("INTRODUCTION",1)
+		if "Acknowledgments" in Content:
+			fin = "Acknowledgments"
+		else:
+			fin = "References"
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+       
 
 def Discuss(Content):
-    if "Acknowledgements" in Content:
-        debut = Content.split("Acknowledgements",1)
-        fin="References"
-        a = debut[1].split(fin)
-        a1 = a[0].split("\n")
-        a = ''.join(a1)
-        return a
+	if "Acknowledgments" in Content:
+		debut = Content.split("Acknowledgments",1)
+		fin="References"
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+	elif "Acknowledgements" in Content:
+		debut = Content.split("Acknowledgements",1)
+		fin="References"
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+	elif "ACKNOWLEDGMENT" in Content:
+		debut = Content.split("ACKNOWLEDGMENT",1)
+		fin="REFERENCES"
+		a = debut[1].split(fin)
+		a1 = a[0].split("\n")
+		a = ''.join(a1)
+		return a
+	else :
+		return "Pas de Discussion"
 
 def Auteur(Content,titre):
     texte = Content.lower()
@@ -161,8 +213,17 @@ def filtre(src,dst,element):
         
         dst.write("\n"+"Biblio : "+Biblio(txt))
 
+    #---------Intro--------------
+        dst.write("\n"+"Introduction : "+Intro(txt))
     #---------Corps--------------
-        dst.write("Corps : " +txt.split("references")[1].split("\n\n")[0]+"\n")
+        dst.write("\n"+"Corps : "+Corpse(txt))
+    #---------Conclusion--------------
+        dst.write("\n"+"Conclusion : "+Conclusion(txt))
+    #---------Discussion--------------
+        dst.write("\n"+"Discussion : "+Discuss(txt))    
+     
+       
+       
 
 
 def transmog(arg):
@@ -323,7 +384,7 @@ else:
         pdf(directory)  
         transmog(directory)
         t = "{}/tmp".format(directory)
-        shutil.rmtree(t) 
+        #shutil.rmtree(t) 
     # Verifier si le type de sortie est égale a xml
     elif sys.argv[2] == '-x':
         # Début de la conversion
