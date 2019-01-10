@@ -1,9 +1,24 @@
 # Gr4GL_TD3L3
-
-Le C++ est plus rapide que le python pour exécuter le même code de test.
-Mais nous partons tout de même sur le python car il minimise les risques de bug et nous simplifie la partie développement.
-
-### ******* version 2.0.0 *******
+# the pdf converter 
+### ******* version 3.0.0 *******
+Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
+#### Authors:
+-Nizar REZAIGUI (SCRUM Master)
+-Thibaut CHASTELLIERE
+-Florian FEUILLEPAIN
+-Zinedine MAKHLOUF
+-Hafsa LAACHIRI
+#### Prerequisites :
+vous devez installez :
+```console
+lxml
+```
+#### Installing :
+Sous LINUX dans une fenetre de commande tapez :
+````console
+$ sudo apt-get install python3-lxml
+````
+#### How to use :
 Pour lancer le programme il suffit de mettre le dossier Papers et le fichier gl.py dans un même dossier,puis d'ouvrir le terminal à partir de ce dossier et de lancer le programme avec Papers en argument .
 
 Tapez la commande suivante dans le console pour effectuer la conversion :
@@ -22,4 +37,8 @@ Dans chaque pdf traité on a identifié 3 choses :
   -Le nom du fichier d’origine (dans une ligne)
   -Le titre du papier (dans une ligne)
   -Le résumé ou abstract de l’auteur (dans une ligne)
+  -La bibliographie 
+  -La conclusion
+  -La discussion
+
 
