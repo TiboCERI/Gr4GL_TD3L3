@@ -27,20 +27,56 @@ def Resume(Content):
     return a
 
 def Intro(Content):
-    debut = Content.split("Introduction\n",1)
-    fin=".\n\n"
-    a = debut[0].split(fin)
-    a1 = a[0].split("\n\n")
-    a = ''.join(a1)
-    return a
+if "Introduction" in Content :
+        debut = Content.split("Introduction\n",1)
+        if "Mikolov" in Content:
+            fin = "2 "
+        else:
+            fin = "2\n"
+        a=debut[1].split(fin)
+        a1=a[0] 
+        return a1
+        
+    elif "INTRODUCTION" :
+        debut = Content.split("INTRODUCTION\n",1)
+        if "Naive" in Content:
+            fin = "2."
+        else :
+            fin = "2\n"
+        a=debut[1].split(fin)
+        a1=a[0]
+        return a1
 
 def Conclusion(Content):
-    debut = Content.split("Conclusions\n",1)
-    fin=".\n\n"
-    a = debut[0].split(fin)
-    a1 = a[0].split("\n\n")
-    a = ''.join(a1)
-    return a
+    if "Conclusion" in Content:
+        debut = Content.split("Conclusion",1)
+        fin="references\n"
+        a = debut[1].split(fin)
+        a1 = a[0].split("\n")
+        a = ''.join(a1)
+        return a
+
+def Corpse(Content):
+    if "Introduction" in Content:
+        debut = Content.split("Introduction",1)
+        
+        if "Acknowledgements" in Content:
+            fin = "Acknowledgements"
+        else:
+            fin = "References"
+        a = debut[1].split(fin)
+        a1 = a[0].split("\n")
+        a = ''.join(a1)
+        return a
+
+def Discuss(Content):
+    if "Acknowledgements" in Content:
+        debut = Content.split("Acknowledgements",1)
+        fin="References"
+        a = debut[1].split(fin)
+        a1 = a[0].split("\n")
+        a = ''.join(a1)
+        return a
 
 def Auteur(Content,titre):
     texte = Content.lower()
@@ -209,11 +245,11 @@ def createXmlFile(src,dst,title,rwt):
 
     userelement4 = ET.SubElement(root,"introduction").text = Intro(txt)
    
-    userelement5 = ET.SubElement(root,"corps")
+    userelement5 = ET.SubElement(root,"corps").text = Corpse(txt)
 
-    userelement6 = ET.SubElement(root,"conclusions").text = Conclusion(txt)
+    userelement6 = ET.SubElement(root,"conclusion").text = Conclusion(txt)
 
-    userelement7 = ET.SubElement(root,"discussion")
+    userelement7 = ET.SubElement(root,"discussion").text = Discuss(txt)
 
     userelement8 = ET.SubElement(root,"biblio").text = Biblio(txt)
         
