@@ -5,18 +5,46 @@ import os       #commande de base
 import os.path  #le path du program
 import shutil   #pour suprimmer récursivement
 
-def biblioFinder(normalContent, lowerContent) :
-	
-	indexFound = lowerContent.find("\nreferences\n")
-	if indexFound == -1 :
-		return "bibliography not found"
-	indexFound += len("\nreferences\n")
-	normalContent = normalContent[indexFound:]
-	indexFound = normalContent.find("\n\n");
-	if indexFound == -1 :
-		return "bibliography not found"
-	normalContent = normalContent[:indexFound]
-	return normalContent
+
+
+def Biblio(normalContent):
+    lowerContent = normalContent.lower()
+    if " references" in lowerContent:
+        indexFound = lowerContent.find("\nreferences\n")
+    else:
+        indexFound = lowerContent.find("references\n")
+    if indexFound == -1 :
+        return "bibliography not found"
+    indexFound += len("references\n")
+    normalContent = normalContent[indexFound:]
+    indexFound = normalContent.find("\n\n");
+    if indexFound == -1 :
+        return "bibliography not found"
+    normalContent = normalContent[:indexFound]  
+    if "[1]" in normalContent:
+        contentOnLine = normalContent.replace(".\n","  ;  ").replace("\n"," ")
+        contentOnLine = contentOnLine.replace(";", "\n")
+        return contentOnLine
+    elif "(2013)" in normalContent:
+        normalContent = normalContent.replace("\n"," ")
+        for i in range(1900,2020):
+            if str(i) in normalContent:
+                a = "("+str(i)+")"
+                b = "("+str(i)+")\n"
+                
+                normalContent = normalContent.replace(a, b)
+        return normalContent
+    else:
+        normalContent = normalContent.replace("\n"," ")
+        for i in range(1900,2020):
+            if str(i) in normalContent:
+                a = str(i)+"."
+                b = str(i)+".\n"
+
+                
+                normalContent = normalContent.replace(a, b)
+        return normalContent
+    
 
 def filtre(src,dst,element):
         # on remplace les underscore par des espaces et on enleve l'extension du fichier 
@@ -64,10 +92,6 @@ def filtre(src,dst,element):
 				auteur2 = auteur[1].split("abstract",1)
 		
 			dst.write("\n"+"Auteur : "+auteur2[0])
-        # bibliographie
-        #contenu = src.read()
-        #contenuLowerCase = contenu.lower()
-        # biblioFinder(contenu, contenuLowerCase)
         dst.write("\n"+"References :\n"biblioFinder(src.read(), txt)
 		
 
