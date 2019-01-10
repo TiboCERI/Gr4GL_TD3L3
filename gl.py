@@ -74,54 +74,37 @@ def Biblio(normalContent):
         return normalContent
     
 
-def filtre(src,dst,element):
-        # on remplace les underscore par des espaces et on enleve l'extension du fichier 
-		titre = element.replace('.txt','').replace('_',' ')
-        # on ecrit le nom du pdf dans le fichier de destination (premiere ligne) 		
-		dst.write("Nom du pdf : "+titre+"\n")				 							
-		for i in range(2000,2019) :								
-			if str(i) in titre :
-				annee = str(i)	
-        # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)
-		dst.write("Titre : "+  titre.split(annee)[1] + "\n") 
-        # lecture du fichier dans une variable string 		
-		txt = src.read()
-        # blocs de conditions pour identifier le début du résumé  											
-		if "ABSTRACT" in txt :										
-			debut = txt.split("ABSTRACT",1)						
-								
-		elif "Abstract" in txt :
-			debut = txt.split("Abstract",1)
-		
-		fin="1"
-        # blocs de conditions pour identifier la fin du résumé
-		if "Keywords" in txt :										
-			fin="Keywords"
-			
-		elif "Index" in txt :
-			fin="Index"
-		
-		a1 = debut[1].split(fin)
-		a2 = a1[0].split("\n")
-		dst.write("Resumé : ")
-        # ecriture du résumé dans le fichier de destination sur une seule ligne (troisieme ligne)
-		for i in range(0,len(a2)) :									
-			dst.write(a2[i])
-
-        # pour identifier les auteurs
-		txt = txt.lower()
-		aut = titre.split(annee)[1].split(" ")
-		aut2 = aut[len(aut)-1]
-		aut2= aut2.lower()
-        # ecriture des auteurs dans le fichier de destination 
-		if aut2 in txt :
-			auteur = txt.split(aut2)									
-			if "abstract" in txt :
-				auteur2 = auteur[1].split("abstract",1)
-		
-			dst.write("\n"+"Auteur : "+auteur2[0])
-        dst.write("\n"+"References :\n"biblioFinder(src.read(), txt)
-		
+def filtretxt(src,dst,element):
+    #-----------Nom du PDF-----------
+        titre = element.replace('.txt','').replace('_',' ')         # on remplace les underscore par des espaces et on enleve l'extension du fichier 
+        dst.write("Nom du pdf : "+titre+"\n")   
+        txt = src.read()
+    #-----------Titre-----------                                    # on ecrit le nom du pdf dans le fichier de destination (premiere ligne)                    
+        for i in range(2000,2019) :                             
+            if str(i) in titre :
+                annee = str(i)  
+        titre2 = titre.split(annee)[1]
+        if "Rouge" in titre :
+            titre1 = txt.split("ROUGE:")
+            titre2 = titre1[1].split("\n")[0]
+            dst.write("Titre : "+  titre2 + "\n")
+        elif "naive bayes" in titre:
+            titre1 = txt.split("\n")
+            titre2 = titre1[0]
+            dst.write("Titre : "+  titre2 + "\n")
+        else:  
+            dst.write("Titre : "+  titre2 + "\n")       # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
+    #-----------Résumé-----------                                   # lecture du fichier dans une variable string
+        a2 = Resume(txt)
+        dst.write("Resumé : ")
+        for i in range(0,len(a2)) :                                 # ecriture du résumé dans le fichier de destination sur une seule ligne (troisieme ligne)
+            dst.write(a2[i])
+    #----------Auteurs------------
+        
+        dst.write("\n"+"Auteur : "+Auteur(txt,titre2))      
+    #----------Biblio-------------
+        
+        dst.write("\n"+"Biblio : "+Biblio(txt))
 
 
 def transmog(arg):
