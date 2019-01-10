@@ -4,10 +4,15 @@
 Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
 #### Authors:
 -Nizar REZAIGUI (SCRUM Master)
+
 -Thibaut CHASTELLIERE
+
 -Florian FEUILLEPAIN
+
 -Zinedine MAKHLOUF
+
 -Hafsa LAACHIRI
+
 #### Prerequisites :
 vous devez installez :
 ```console
