@@ -76,7 +76,7 @@ def Biblio(normalContent):
         return normalContent
     
 
-def filtretxt(src,dst,element):
+def filtre(src,dst,element):
     #-----------Nom du PDF-----------
         titre = element.replace('.txt','').replace('_',' ')         # on remplace les underscore par des espaces et on enleve l'extension du fichier 
         dst.write("Nom du pdf : "+titre+"\n")   
@@ -162,7 +162,7 @@ def pdf(directoryPath):
 
 def createXmlFile(src,dst,title,rwt):
                 
-    filename = rwt+".xml"
+    filename = dst+rwt+".xml"
     titre = title.replace('.txt','').replace('_',' ')
     txt = src.read()
     root = ET.Element("article")
@@ -184,10 +184,10 @@ def createXmlFile(src,dst,title,rwt):
     else:  
         userelement1 = ET.SubElement(root,"titre").text = titre2  
     userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, titre2)
-    userelement3 = ET.SubElement(root,"abstract")
+    userelement3 = ET.SubElement(root,"abstract").text = Resume(txt)
     userelement4 = ET.SubElement(root,"corps")
     userelement5 = ET.SubElement(root,"conclusions")
-    userelement6 = ET.SubElement(root,"biblio")
+    userelement6 = ET.SubElement(root,"biblio").text = Biblio(txt)
         
     tree= ET.ElementTree(root)
     tree.write(filename)        
@@ -267,6 +267,8 @@ else:
         print ("Conversion des fichier du répértoire " + directory)
         pdf(directory)
         createFichierXml(directory) 
+        t = "{}/tmp".format(directory)
+        shutil.rmtree(t) 
     # Terminer le programme si l'argument de type de sortie n'égale ni à txt ni à xml 
     else :
         print(bcolors.FAIL + "Ooops le type de sortie est inconnue" + bcolors.ENDC)
