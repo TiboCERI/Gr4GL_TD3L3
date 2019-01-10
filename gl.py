@@ -88,6 +88,14 @@ def transmog(arg):
 		    source.close()
 		    destination.close()
 
+def createFolder():
+
+			listFichierPdf = os.listdir('.')
+			dir_path = os.path.dirname(os.path.abspath(__file__))
+			
+			for i in listFichierPdf :
+						os.mkdir(dir_path+"/" + os.path.splitext(os.path.basename(i))[0])
+
 
 def pdf(directoryPath):
     # Faire une purge du répértoire temporaire à l'intérieur du dossier passé
@@ -201,8 +209,12 @@ else:
         t = "{}/tmp".format(directory)
         shutil.rmtree(t) 
     # Verifier si le type de sortie est égale a xml
-    #elif sys.argv[2] == '-x':
-        #...
+    elif sys.argv[2] == '-x':
+        # Début de la conversion
+        print("Conversion pdf to xml")
+        print ("Conversion des fichier du répértoire " + directory)
+        
+        createFichierXml() 
     # Terminer le programme si l'argument de type de sortie n'égale ni à txt ni à xml 
     else :
         print(bcolors.FAIL + "Ooops le type de sortie est inconnue" + bcolors.ENDC)
