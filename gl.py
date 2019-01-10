@@ -4,6 +4,8 @@ import sys      #argument
 import os       #commande de base
 import os.path  #le path du program
 import shutil   #pour suprimmer récursivement
+import xml.etree.ElementTree as ET #XML
+from lxml import etree #XML
 
 def Resume(Content):
     if "ABSTRACT" in Content :                                      # blocs de conditions pour identifier le début du résumé  
@@ -22,7 +24,7 @@ def Resume(Content):
     a1 = debut[1].split(fin)
     a2 = a1[0].split("\n")
     return a2
-    
+
 def Auteur(Content,titre):
     texte = Content.lower()
     titre2 = titre.split(" ")
@@ -114,22 +116,22 @@ def transmog(arg):
     os.mkdir(tmp)
     t = "{}/tmp".format(arg)
     for element in os.listdir(t):
-	    if element.endswith('.txt'):
-		    a = "{0}/result/".format(arg)
-		    s = "{0}/tmp/".format(arg)
-		    source = open(s+element,"r")
-		    destination = open(a+element, "w")	
-		    filtre(source,destination,element)
-		    source.close()
-		    destination.close()
+        if element.endswith('.txt'):
+            a = "{0}/result/".format(arg)
+            s = "{0}/tmp/".format(arg)
+            source = open(s+element,"r")
+            destination = open(a+element, "w")  
+            filtre(source,destination,element)
+            source.close()
+            destination.close()
 
 def createFolder():
 
-			listFichierPdf = os.listdir('.')
-			dir_path = os.path.dirname(os.path.abspath(__file__))
-			
-			for i in listFichierPdf :
-						os.mkdir(dir_path+"/" + os.path.splitext(os.path.basename(i))[0])
+            listFichierPdf = os.listdir('.')
+            dir_path = os.path.dirname(os.path.abspath(__file__))
+            
+            for i in listFichierPdf :
+                        os.mkdir(dir_path+"/" + os.path.splitext(os.path.basename(i))[0])
 
 
 def pdf(directoryPath):
@@ -154,42 +156,57 @@ def pdf(directoryPath):
             # renommer le fichier 
             os.rename("{0}/{1}".format(directoryPath,fileName), "{0}/{1}".format(directoryPath,newFileName))
             # créer la commande qui permet de faire la conversion
-            pdfToTextCommand = "pdftotext -f 1 {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
+            pdfToTextCommand = "pdftotext {1}/{2} {1}/tmp/{3}.txt".format(os.getcwd(),directoryPath, newFileName, fileNameWithouExt)
             # Executer la commande de conversion
             os.system(pdfToTextCommand)
 
-def createXmlFile(text):
-				
-		filename = text+".xml"
-		
-		root = ET.Element("article")
-		userelement = ET.SubElement(root,"preamble")
-		userelement1 = ET.SubElement(root,"titre")
-		userelement2 = ET.SubElement(root,"auteur")
-		userelement3 = ET.SubElement(root,"abstract")
-		userelement4 = ET.SubElement(root,"corps")
-		userelement5 = ET.SubElement(root,"conclusions")
-		userelement6 = ET.SubElement(root,"biblio")
-		
-		tree= ET.ElementTree(root)
-		tree.write(filename)        
+def createXmlFile(src,dst,title,rwt):
+                
+    filename = rwt+".xml"
+    titre = title.replace('.txt','').replace('_',' ')
+    txt = src.read()
+    root = ET.Element("article")
 
+    userelement = ET.SubElement(root,"preamble").text = titre
+    for i in range(2000,2019) :
 
-def createFichierXml() :	
-	listFichierPdf = os.listdir('.') 
+        if str(i) in titre:
+            annee = str(i)  
+    titre2 = titre.split(annee)[1]
+    if "Rouge" in titre :
+        titre1 = txt.split("ROUGE:")
+        titre2 = titre1[1].split("\n")[0]
+        userelement1 = ET.SubElement(root,"titre").text = titre2
+    elif "naive bayes" in titre:
+        titre1 = txt.split("\n")
+        titre2 = titre1[0]
+        userelement1 = ET.SubElement(root,"titre").text = titre2
+    else:  
+        userelement1 = ET.SubElement(root,"titre").text = titre2  
+    userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, titre2)
+    userelement3 = ET.SubElement(root,"abstract")
+    userelement4 = ET.SubElement(root,"corps")
+    userelement5 = ET.SubElement(root,"conclusions")
+    userelement6 = ET.SubElement(root,"biblio")
+        
+    tree= ET.ElementTree(root)
+    tree.write(filename)        
 
-	dir_path = os.path.dirname(os.path.abspath(__file__))
+def createFichierXml(arg) : 
+    tmp = "{}/result".format(arg)
+    if os.path.exists(tmp):
+        shutil.rmtree(tmp)
+    os.mkdir(tmp)
+    t = "{}/tmp".format(arg)
+    for element in os.listdir(t):
+        if element.endswith('.txt'):
+            rwt = os.path.splitext(os.path.basename(element))[0]
+            a = "{0}/result/".format(arg)
+            s = "{0}/tmp/".format(arg)
+            source = open(s+element,"r")  
+            createXmlFile(source,a,element,rwt)
+            source.close()
 
-	for i in listFichierPdf :
-		if i.endswith(".pdf"):
-					  s = os.path.splitext(os.path.basename(i))[0]
-					  b= i.replace(' ', '_')
-					  os.rename (i , b)
-					  cmd=  'pdftotext -nopgbrk ' + b  + ' ' + s +'.txt'
-					  os.system( cmd )
-					  createXmlFile(s)
-
-    
 
 # code des couleurs
 class bcolors:
@@ -218,7 +235,7 @@ if len(sys.argv) != 3:
     print(bcolors.OKBLUE+"soit -t pour un fichier en format texte ."+bcolors.ENDC)
     print(bcolors.OKBLUE+"soit -x pour un fichier en format xml."+ bcolors.ENDC)
     print("Exemple 1: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -t pour un fichier TXT" + bcolors.ENDC)
-    print("Exemple 2: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -t pour un fichier XML" + bcolors.ENDC)
+    print("Exemple 2: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -x pour un fichier XML" + bcolors.ENDC)
     sys.exit(2)
 else:
     # Récupérer le répértoire courant ( cwd : current working directory )
@@ -239,7 +256,7 @@ else:
         # Début de la conversion
         print("Conversion pdf to txt")
         print ("Conversion des fichier du répértoire " + directory)
-        pdf(directory)	
+        pdf(directory)  
         transmog(directory)
         t = "{}/tmp".format(directory)
         shutil.rmtree(t) 
@@ -248,8 +265,8 @@ else:
         # Début de la conversion
         print("Conversion pdf to xml")
         print ("Conversion des fichier du répértoire " + directory)
-        
-        createFichierXml() 
+        pdf(directory)
+        createFichierXml(directory) 
     # Terminer le programme si l'argument de type de sortie n'égale ni à txt ni à xml 
     else :
         print(bcolors.FAIL + "Ooops le type de sortie est inconnue" + bcolors.ENDC)
