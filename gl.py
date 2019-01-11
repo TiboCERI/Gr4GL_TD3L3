@@ -27,7 +27,7 @@ def Resume(Content):
     return a
 
 def Intro(Content):
-	if "Introduction" in Content :
+	if "Introduction" in Content :                      # blocs de conditions pour identifier l'introduction
 		debut = Content.split("Introduction\n",1)
 		if "Mikolov" in Content:
 			fin = "2 "
@@ -53,7 +53,7 @@ def Intro(Content):
 		
 
 def Conclusion(Content):
-	if "Conclusion" in Content:
+	if "Conclusion" in Content:				# blocs de conditions pour identifier la conclusion
 		debut = Content.split("Conclusion",1)
 		if "Acknowledgments" in Content:
 			fin= "Acknowledgments"
