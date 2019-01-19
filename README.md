@@ -1,6 +1,6 @@
-# Gr4GL_TD3L3
+# Gr4GL_TD3L3 github : https://github.com/TiboCERI/Gr4GL_TD3L3
 # the pdf converter 
-### ******* version 3.0.0 *******
+### ******* version 4.0.0 *******
 Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
 #### Authors:
 
@@ -22,12 +22,20 @@ Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
 vous devez installez :
 ```console
 lxml
+pdftotext
 ```
 #### Installing :
 Pour installer lxml sous LINUX dans une fenetre de commande tapez :
 ````console
 $ sudo apt-get install python3-lxml
+
 ````
+Pour installer pdftotext sous LINUX dans une fenetre de commande tapez :
+````console
+$ sudo apt-get install poppler-utils
+
+````
+
 #### How to use :
 Pour lancer le programme il suffit de mettre le dossier Papers et le fichier gl.py dans un même dossier,puis d'ouvrir le terminal à partir de ce dossier et de lancer le programme avec Papers en argument .
 
