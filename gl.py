@@ -148,7 +148,7 @@ def Corps(Content):
             a1=a[0]
             a = ''.join(a1)
             return a
-    if "I. I NTRODUCTION" :
+    if "I. I NTRODUCTION" in Content:
         debut = Content.split("I. I NTRODUCTION\n",1)
         deb = "II. R ELATED W ORK"
         fin = "VI. C ONCLUSIONS AND F UTURE W ORK"
@@ -288,7 +288,7 @@ def filtre(src,dst,element):
         try:
             annee
         except NameError:
-            dst.write("titre may not found")
+            print("titre may not found")
         else:
             titre2 = titre.split(annee)[1]
         if "Rouge" in titre :
@@ -300,7 +300,8 @@ def filtre(src,dst,element):
             titre2 = titre1[0]
             dst.write("\n\n\nTitre : "+  titre2 + "\n")
         else:  
-            dst.write("\n\n\nTitre : "+  titre2 + "\n")       # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
+            title = txt.split("\n",1)
+            dst.write("\n\n\nTitre : "+  title[0] + "\n")      # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
     #-----------Résumé-----------                                   # lecture du fichier dans une variable string
         a2 = Resume(txt)
         dst.write("\n\n\nResumé : ")

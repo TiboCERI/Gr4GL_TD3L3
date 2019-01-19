@@ -48,11 +48,13 @@ if len(sys.argv) != 2:
     sys.exit(2)
 else:
     current = os.getcwd()
-    if os.path.exists(sys.argv[1]):
+    if os.path.exists(sys.argv[1]) & os.path.isdir(sys.argv[1]):
        # os.chdir(sys.argv[1])
         pdf(sys.argv[1])
         transmog(sys.argv[1])
        # sp.Popen("rm tmp")
     else:
+        #print(sys.argv[1])
+        print( "L'argument n'éxiste pas ou n'est pas un répertoire !")
         sys.exit(2)
         
