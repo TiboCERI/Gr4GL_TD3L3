@@ -10,11 +10,7 @@ Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
 
 -Florian FEUILLEPAIN  ------> FlorianFeuillepain
 
-<<<<<<< HEAD
--Programme Python pour parseur pdf to text
-=======
 -Zinedine MAKHLOUF  ------> AngryTaiga
->>>>>>> 7ad7d8c3ee00d0dbbf84401341fe5dea3db4f8b5
 
 -Hafsa LAACHIRI   ------> hflaachiri
 
@@ -60,8 +56,6 @@ Dans chaque pdf traité on a identifié 3 choses :
   -La discussion
 
 
-<<<<<<< HEAD
+
 -Utilisation d'un executeur dans le programme permettant de lancer la commande 'pdftotext'
 
-=======
->>>>>>> 7ad7d8c3ee00d0dbbf84401341fe5dea3db4f8b5
