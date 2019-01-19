@@ -46,7 +46,7 @@ def Introduction(Content):
             a1=a[0]
             a = ''.join(a1)
             return a
-    if "I. I NTRODUCTION" :
+    if "I. I NTRODUCTION" in Content:
         debut = Content.split("I. I NTRODUCTION\n",1)
         fin = "II."
         try:
@@ -148,7 +148,7 @@ def Corps(Content):
             a1=a[0]
             a = ''.join(a1)
             return a
-    if "I. I NTRODUCTION" in Content:
+    if "I. I NTRODUCTION" :
         debut = Content.split("I. I NTRODUCTION\n",1)
         deb = "II. R ELATED W ORK"
         fin = "VI. C ONCLUSIONS AND F UTURE W ORK"
@@ -218,22 +218,18 @@ def Discussion(Content):
     return "Pas de Discussion"
 
 def Auteur(Content,titre):
-    texte = Content.lower()
-    titre2 = titre.split(" ")
-    #print(titre2)
-    mot = titre2[len(titre2)-2]+" "+titre2[len(titre2)-1]
-    mot = mot.lower()
-    if mot in texte :
-        auteur = texte.split(mot)
-        auteur2 = auteur[1].split("abstract",1)
-        enligne = auteur2[0].replace('\n',"  ;  ")
-        return enligne
-    return "erreur"
+	titre2 = titre.split("Abstract",1)
+	return titre2[0]
 
-def Titre(Content,titre):
-    aut = Auteur(Content,titre)
-    title = Content.split(aut)
+def Titre(Content):
+    title = Content.split("\n",1)
+    titre = title[0]
     return titre
+
+def Titre2(Content):
+	title = Content.split("\n",1)
+	titre = title[1]
+	return titre
 
 def Biblio(normalContent):
     lowerContent = normalContent.lower()
@@ -248,7 +244,7 @@ def Biblio(normalContent):
     indexFound = normalContent.find("\n\n");
     if indexFound == -1 :
         return "bibliography not found"
-    normalContent = normalContent[:indexFound]  
+    
     if "[1]" in normalContent:
         contentOnLine = normalContent.replace(".\n","  ;  ").replace("\n"," ")
         contentOnLine = contentOnLine.replace(";", "\n")
@@ -288,7 +284,7 @@ def filtre(src,dst,element):
         try:
             annee
         except NameError:
-            print("titre may not found")
+            dst.write("titre may not found")
         else:
             titre2 = titre.split(annee)[1]
         if "Rouge" in titre :
@@ -300,8 +296,9 @@ def filtre(src,dst,element):
             titre2 = titre1[0]
             dst.write("\n\n\nTitre : "+  titre2 + "\n")
         else:  
-            title = txt.split("\n",1)
-            dst.write("\n\n\nTitre : "+  title[0] + "\n")      # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
+        	title = txt.split("\n",1)
+        	dst.write("\n\n\nTitre : "+  title[0] + "\n") 
+                  # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
     #-----------Résumé-----------                                   # lecture du fichier dans une variable string
         a2 = Resume(txt)
         dst.write("\n\n\nResumé : ")
@@ -309,7 +306,7 @@ def filtre(src,dst,element):
             dst.write(a2[i])
     #----------Auteurs------------
         
-        dst.write("\n\n\n"+"Auteur : "+Auteur(txt,titre2))      
+        dst.write("\n\n\n"+"Auteur : "+Auteur(txt,title[1]))      
     #----------Biblio-------------
         
         dst.write("\n\n\n"+"Biblio : "+Biblio(txt))
@@ -375,22 +372,10 @@ def createXmlFile(src,dst,title,rwt):
     root = ET.Element("article")
 
     userelement = ET.SubElement(root,"preamble").text = titre
-    for i in range(2000,2019) :
+    
+    userelement1 = ET.SubElement(root,"titre").text = Titre(txt)
 
-        if str(i) in titre:
-            annee = str(i)  
-    titre2 = titre.split(annee)[1]
-    if "Rouge" in titre :
-        titre1 = txt.split("ROUGE:")
-        titre2 = titre1[1].split("\n")[0]
-        userelement1 = ET.SubElement(root,"titre").text = titre2
-    elif "naive bayes" in titre:
-        titre1 = txt.split("\n")
-        titre2 = titre1[0]
-        userelement1 = ET.SubElement(root,"titre").text = titre2
-    else:  
-        userelement1 = ET.SubElement(root,"titre").text = titre2  
-    userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, titre2)
+    userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, Titre2(txt))
 
     userelement3 = ET.SubElement(root,"abstract").text = Resume(txt)
 
