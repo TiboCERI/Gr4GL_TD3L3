@@ -1,6 +1,6 @@
 # Gr4GL_TD3L3 github : https://github.com/TiboCERI/Gr4GL_TD3L3
 # the pdf converter 
-### ******* version 4.0.0 *******
+### ******* version 3.0.0 *******
 Ce programme vous permet de convertir un PDF en fichier TEXTE ou XML.
 #### Authors:
 
