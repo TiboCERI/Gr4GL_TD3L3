@@ -13,134 +13,223 @@ def Resume(Content):
                                 
     if "Abstract" in Content :
         debut = Content.split("Abstract",1)
-        
+    
     fin="1"
     if "Keywords" in Content :                                      # blocs de conditions pour identifier la fin du résumé
         fin="Keywords"
             
     elif "Index" in Content :
         fin="Index"
-        
-    a1 = debut[1].split(fin)
-    a2 = a1[0].split("\n")
-    a = ''.join(a2)
-    return a
+    try:
+        debut
+    except NameError:
+        return "erreur"
+    else:
+        a1 = debut[1].split(fin)
+        a2 = a1[0].split("\n")
+        a = ''.join(a2)
+        return a
 
-def Intro(Content):
-	if "Introduction" in Content :
-		debut = Content.split("Introduction\n",1)
-		if "Mikolov" in Content:
-			fin = "2 "
-		else:
-			fin = "2\n"
-		a=debut[1].split(fin)
-		a1=a[0]
-		a = ''.join(a1)
+def Introduction(Content):
+    if "Introduction" in Content :
+        debut = Content.split("Introduction\n",1)
+        if "Mikolov" in Content:
+            fin = "2 "
+        else:
+            fin = "2\n"
+        try:
+            debut
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "I. I NTRODUCTION" in Content:
+        debut = Content.split("I. I NTRODUCTION\n",1)
+        fin = "II."
+        try:
+            debut
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[0].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "INTRODUCTION" :
+        debut = Content.split("INTRODUCTION\n",1)
+        if "Naive" in Content:
+            fin = "2."
+        else :
+            fin = "2\n"
+        try:
+            debut
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
 
-		return a
-		
-	elif "INTRODUCTION" :
-		debut = Content.split("INTRODUCTION\n",1)
-		if "Naive" in Content:
-			fin = "2."
-		else :
-			fin = "2\n"
-		a=debut[1].split(fin)
-		a1=a[0]
-		a = ''.join(a1)
-
-		return a
-		
 
 def Conclusion(Content):
-	if "Conclusion" in Content:
-		debut = Content.split("Conclusion",1)
-		if "Acknowledgments" in Content:
-			fin= "Acknowledgments"
-		elif "Acknowledgements" in Content:
-			fin= "Acknowledgements"
-		else:
-			fin= "References\n"
-		
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-	elif "CONCLUSION" :
-		
-		debut = Content.split("CONCLUSION",1)
-		if "ACKNOWLEDGMENT" in Content:
-			fin= "ACKNOWLEDGMENT"
-		else:
-			fin= "REFERENCES\n"
-		
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-	else:
-		return "Conclusion MARCHE PAS"
-
-def Corpse(Content):
-	if "Introduction" in Content:
-		debut = Content.split("Introduction",1)
+    if "Conclusion" in Content:
+        debut = Content.split("Conclusion",1)
+        if "Acknowledgments" in Content:
+            fin= "Acknowledgments"
+        elif "Acknowledgements" in Content:
+            fin= "Acknowledgements"
+        else:
+            fin= "References\n"
         
-		if "Acknowledgments" in Content:
-			fin = "Acknowledgments"
-		else:
-			fin = "References"
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-	elif "INTRODUCTION" in Content:
-		debut = Content.split("INTRODUCTION",1)
-		if "Acknowledgments" in Content:
-			fin = "Acknowledgments"
-		else:
-			fin = "References"
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-       
+        try:
+            debut
+            fin
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "VI. C ONCLUSIONS AND F UTURE W ORK" in Content:
+        debut = Content.split("VI. C ONCLUSIONS AND F UTURE W ORK",1)
 
-def Discuss(Content):
-	if "Acknowledgments" in Content:
-		debut = Content.split("Acknowledgments",1)
-		fin="References"
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-	elif "Acknowledgements" in Content:
-		debut = Content.split("Acknowledgements",1)
-		fin="References"
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-	elif "ACKNOWLEDGMENT" in Content:
-		debut = Content.split("ACKNOWLEDGMENT",1)
-		fin="REFERENCES"
-		a = debut[1].split(fin)
-		a1 = a[0].split("\n")
-		a = ''.join(a1)
-		return a
-	else :
-		return "Pas de Discussion"
+        fin= "ACKNOWLEDGMENT"
+
+        try:
+            debut
+            fin
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "CONCLUSION" in Content:
+        debut = Content.split("CONCLUSION",1)
+        if "ACKNOWLEDGMENT" in Content:
+            fin= "ACKNOWLEDGMENT"
+        else:
+            fin= "REFERENCES\n"
+        
+        try:
+            debut
+            fin
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+            
+    return "erreur"
+
+def Corps(Content):
+    if "Introduction" in Content:
+        debut = Content.split("Introduction",1)
+        if "Mikolov" in Content:
+            deb = "2 "
+        else : 
+            deb = "2\n"
+        debut1 = debut[1].split(deb,1)
+        fin = "Conclusion"
+        try:
+            debut1
+        except NameError:
+            return "erreur"
+        else:
+            a=debut1[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "I. I NTRODUCTION" :
+        debut = Content.split("I. I NTRODUCTION\n",1)
+        deb = "II. R ELATED W ORK"
+        fin = "VI. C ONCLUSIONS AND F UTURE W ORK"
+        debut1 = debut[1].split(deb,1)
+        a=debut1[1].split(fin)
+        a1=a[0]
+        a = ''.join(a1)
+        return a
+    if "INTRODUCTION" in Content:
+        debut = Content.split("INTRODUCTION",1)
+        if "Naive" in Content:
+            deb = "2."
+        elif "Furui" in Content:
+            deb = "II."
+        else :
+            debut = "2\n"
+        debut1 = debut[1].split(deb,1)
+        fin = "CONCLUSION"
+        try:
+            debut1
+        except NameError:
+            return "erreur"
+        else:
+            a=debut1[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    return "erreur"
+
+def Discussion(Content):
+    if "Acknowledgments" in Content:
+        debut = Content.split("Acknowledgments",1)
+        fin="References"
+        try:
+            debut
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "Acknowledgements" in Content:
+        debut = Content.split("Acknowledgements",1)
+        fin="References"
+        try:
+            debut
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    if "ACKNOWLEDGMENT" in Content:
+        debut = Content.split("ACKNOWLEDGMENT",1)
+        fin="REFERENCES"
+        try:
+            debut
+        except NameError:
+            return "erreur"
+        else:
+            a=debut[1].split(fin)
+            a1=a[0]
+            a = ''.join(a1)
+            return a
+    return "Pas de Discussion"
 
 def Auteur(Content,titre):
-    texte = Content.lower()
-    titre2 = titre.split(" ")
-    #print(titre2)
-    mot = titre2[len(titre2)-2]+" "+titre2[len(titre2)-1]
-    mot = mot.lower()
-    if mot in texte :
-        auteur = texte.split(mot)
-        auteur2 = auteur[1].split("abstract",1)
-        enligne = auteur2[0].replace('\n',"  ;  ")
-        return enligne
+	titre2 = titre.split("Abstract",1)
+	return titre2[0]
+
+def Titre(Content):
+    title = Content.split("\n",1)
+    titre = title[0]
+    return titre
+
+def Titre2(Content):
+	title = Content.split("\n",1)
+	titre = title[1]
+	return titre
 
 def Biblio(normalContent):
     lowerContent = normalContent.lower()
@@ -155,7 +244,7 @@ def Biblio(normalContent):
     indexFound = normalContent.find("\n\n");
     if indexFound == -1 :
         return "bibliography not found"
-    normalContent = normalContent[:indexFound]  
+    
     if "[1]" in normalContent:
         contentOnLine = normalContent.replace(".\n","  ;  ").replace("\n"," ")
         contentOnLine = contentOnLine.replace(";", "\n")
@@ -183,47 +272,53 @@ def Biblio(normalContent):
 
 def filtre(src,dst,element):
     #-----------Nom du PDF-----------
+        print(element)
         titre = element.replace('.txt','').replace('_',' ')         # on remplace les underscore par des espaces et on enleve l'extension du fichier 
         dst.write("Nom du pdf : "+titre+"\n")   
         txt = src.read()
+        titre2 = titre
     #-----------Titre-----------                                    # on ecrit le nom du pdf dans le fichier de destination (premiere ligne)                    
         for i in range(2000,2019) :                             
             if str(i) in titre :
                 annee = str(i)  
-        titre2 = titre.split(annee)[1]
+        try:
+            annee
+        except NameError:
+            dst.write("titre may not found")
+        else:
+            titre2 = titre.split(annee)[1]
         if "Rouge" in titre :
             titre1 = txt.split("ROUGE:")
             titre2 = titre1[1].split("\n")[0]
-            dst.write("Titre : "+  titre2 + "\n")
+            dst.write("\n\n\nTitre : "+  titre2 + "\n")
         elif "naive bayes" in titre:
             titre1 = txt.split("\n")
             titre2 = titre1[0]
-            dst.write("Titre : "+  titre2 + "\n")
+            dst.write("\n\n\nTitre : "+  titre2 + "\n")
         else:  
-            dst.write("Titre : "+  titre2 + "\n")       # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
+        	title = txt.split("\n",1)
+        	dst.write("\n\n\nTitre : "+  title[0] + "\n") 
+                  # on ecrit le titre du pdf dans le fichier de destination (deuxieme ligne)      
     #-----------Résumé-----------                                   # lecture du fichier dans une variable string
         a2 = Resume(txt)
-        dst.write("Resumé : ")
+        dst.write("\n\n\nResumé : ")
         for i in range(0,len(a2)) :                                 # ecriture du résumé dans le fichier de destination sur une seule ligne (troisieme ligne)
             dst.write(a2[i])
     #----------Auteurs------------
         
-        dst.write("\n"+"Auteur : "+Auteur(txt,titre2))      
+        dst.write("\n\n\n"+"Auteur : "+Auteur(txt,title[1]))      
     #----------Biblio-------------
         
-        dst.write("\n"+"Biblio : "+Biblio(txt))
+        dst.write("\n\n\n"+"Biblio : "+Biblio(txt))
 
     #---------Intro--------------
-        dst.write("\n"+"Introduction : "+Intro(txt))
+        dst.write("\n\n\n"+"Introduction : "+Introduction(txt))
     #---------Corps--------------
-        dst.write("\n"+"Corps : "+Corpse(txt))
+        dst.write("\n\n\n"+"Corps : "+Corps(txt))
     #---------Conclusion--------------
-        dst.write("\n"+"Conclusion : "+Conclusion(txt))
+        dst.write("\n\n\n"+"Conclusion : "+Conclusion(txt))
     #---------Discussion--------------
-        dst.write("\n"+"Discussion : "+Discuss(txt))    
-     
-       
-       
+        dst.write("\n\n\n"+"Discussion : "+Discussion(txt))    
 
 
 def transmog(arg):
@@ -241,14 +336,6 @@ def transmog(arg):
             filtre(source,destination,element)
             source.close()
             destination.close()
-
-def createFolder():
-
-            listFichierPdf = os.listdir('.')
-            dir_path = os.path.dirname(os.path.abspath(__file__))
-            
-            for i in listFichierPdf :
-                        os.mkdir(dir_path+"/" + os.path.splitext(os.path.basename(i))[0])
 
 
 def pdf(directoryPath):
@@ -285,32 +372,20 @@ def createXmlFile(src,dst,title,rwt):
     root = ET.Element("article")
 
     userelement = ET.SubElement(root,"preamble").text = titre
-    for i in range(2000,2019) :
+    
+    userelement1 = ET.SubElement(root,"titre").text = Titre(txt)
 
-        if str(i) in titre:
-            annee = str(i)  
-    titre2 = titre.split(annee)[1]
-    if "Rouge" in titre :
-        titre1 = txt.split("ROUGE:")
-        titre2 = titre1[1].split("\n")[0]
-        userelement1 = ET.SubElement(root,"titre").text = titre2
-    elif "naive bayes" in titre:
-        titre1 = txt.split("\n")
-        titre2 = titre1[0]
-        userelement1 = ET.SubElement(root,"titre").text = titre2
-    else:  
-        userelement1 = ET.SubElement(root,"titre").text = titre2  
-    userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, titre2)
+    userelement2 = ET.SubElement(root,"auteur").text = Auteur(txt, Titre2(txt))
 
     userelement3 = ET.SubElement(root,"abstract").text = Resume(txt)
 
-    userelement4 = ET.SubElement(root,"introduction").text = Intro(txt)
+    userelement4 = ET.SubElement(root,"introduction").text = Introduction(txt)
    
-    userelement5 = ET.SubElement(root,"corps").text = Corpse(txt)
+    userelement5 = ET.SubElement(root,"corps").text = Corps(txt)
 
     userelement6 = ET.SubElement(root,"conclusion").text = Conclusion(txt)
 
-    userelement7 = ET.SubElement(root,"discussion").text = Discuss(txt)
+    userelement7 = ET.SubElement(root,"discussion").text = Discussion(txt)
 
     userelement8 = ET.SubElement(root,"biblio").text = Biblio(txt)
         
@@ -345,7 +420,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
           
 print(bcolors.HEADER + "***************************************")
-print("*       Welcom to PDF To TXT          *")
+print("*       Welcome to PDF To TXT          *")
 print("***************************************" + bcolors.ENDC)
 
 # S'assurer que notre programme reçois le bon nombre d'argument 
@@ -357,8 +432,8 @@ if len(sys.argv) != 3:
     print(bcolors.FAIL + "Ooops nombre d'arguments incorrect" + bcolors.ENDC)
     print("Merci de passer en paramètre le dossier contenant les fichier pds à convertir.")
     print("et le type de sortie :")
-    print(bcolors.OKBLUE+"soit -t pour un fichier en format texte ."+bcolors.ENDC)
-    print(bcolors.OKBLUE+"soit -x pour un fichier en format xml."+ bcolors.ENDC)
+    print(bcolors.OKBLUE+"soit -t pour un répertoire en format texte ."+bcolors.ENDC)
+    print(bcolors.OKBLUE+"soit -x pour un répertoire en format xml."+ bcolors.ENDC)
     print("Exemple 1: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -t pour un fichier TXT" + bcolors.ENDC)
     print("Exemple 2: " + bcolors.OKGREEN+"python3 gl.py chemin_vers_le_dossier -x pour un fichier XML" + bcolors.ENDC)
     sys.exit(2)
@@ -393,7 +468,7 @@ else:
         pdf(directory)
         createFichierXml(directory) 
         t = "{}/tmp".format(directory)
-        #shutil.rmtree(t) 
+        shutil.rmtree(t) 
     # Terminer le programme si l'argument de type de sortie n'égale ni à txt ni à xml 
     else :
         print(bcolors.FAIL + "Ooops le type de sortie est inconnue" + bcolors.ENDC)
